@@ -229,11 +229,11 @@ function App() {
               <div style={styles.visitorTributesList}>
                 {visitorTributes.map((tribute) => (
                   <div key={tribute.id} style={styles.visitorTributeCard}>
-                    <p style={styles.visitorTributeName}>{tribute.name}</p>
-                    <p style={styles.visitorTributeMessage}>{tribute.message}</p>
-                    <div style={styles.visitorTributeDate}>
+                    <div style={styles.visitorTributeTitle}>
+                      <p style={styles.visitorTributeName}>{tribute.name}</p>
                       {new Date(tribute.created_at).toLocaleDateString()}
                     </div>
+                    <p style={styles.visitorTributeMessage}>{tribute.message}</p>
                   </div>
                 ))}
               </div>

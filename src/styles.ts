@@ -53,26 +53,32 @@ export const styles = {
     alignContent: 'space-around'
   } as React.CSSProperties,
   visitorTributeCard: {
-    padding: '1.5rem',
+    padding: '1em',
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
     borderRadius: '10px',
-    border: '1px solid rgba(255, 255, 255, 0.1)'
-  },
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    maxWidth: '500px',
+    minWidth: '200px',
+    height: '150px',
+    overflowX: 'scroll'
+  } as React.CSSProperties,
+  visitorTributeTitle: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    color: 'rgba(255, 255, 255, 0.6)'
+  } as React.CSSProperties,
   visitorTributeName: {
     fontSize: '1.1rem',
     fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: '0.5rem'
+    color: '#fff'
   },
   visitorTributeMessage: {
     fontSize: '1rem',
     color: 'rgba(255, 255, 255, 0.9)',
     lineHeight: '1.6',
     marginBottom: '1rem'
-  },
-  visitorTributeDate: {
-    fontSize: '0.9rem',
-    color: 'rgba(255, 255, 255, 0.6)'
   },
   canvas: {
     position: 'fixed',
