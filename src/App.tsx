@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css'
-import { styles } from './styles.js'
 import type { Tribute, NewTribute } from './types';
-
 
 import LightRays from './LightRays';
 import useMouseMove from './util/useMouseMove.js';
@@ -23,10 +21,7 @@ const memorialContent = {
   ]
 };
 
-
-
 function App() {
-
   const [activeSection, setActiveSection] = useState('home');
   const [visitorTributes, setVisitorTributes] = useState<Tribute[]>([{
     created_at: (new Date()).toISOString(),
@@ -37,7 +32,6 @@ function App() {
   const [newTribute, setNewTribute] = useState<NewTribute>({ name: '', message: '' });
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { mousePos, particles, scrollY } = useMouseMove(canvasRef);
-
 
   // Load visitor tributes
   useEffect(() => {
@@ -55,18 +49,14 @@ function App() {
     loadTributes();
   }, []);
 
-
   const parallaxStyle = {
     transform: `translateY(${scrollY * 0.5}px)`
   };
 
-  const textAnim = () => ({ ...styles.poemLine })
-
-
   return (
     <>
       {/* Canvas Background */}
-      <canvas ref={canvasRef} style={styles.canvas} />
+      <canvas ref={canvasRef} className="canvas" />
       <div style={{ width: '100%', height: '800px', position: 'absolute' }}>
         <LightRays
           raysOrigin="top-center"
@@ -82,40 +72,44 @@ function App() {
           className="custom-rays"
         />
       </div>
+      
       {/* Navigation */}
-      <nav style={styles.nav}>
-        <div style={styles.navContainer}>
+      <nav className="nav">
+        <div className="navContainer">
           {['home', 'memories', 'tributes'].map((section) => (
             <button
               key={section}
-              style={activeSection === section ? { ...styles.navButton, ...styles.navButtonActive } : styles.navButton}
+              className={`navButton ${activeSection === section ? 'navButtonActive' : ''}`}
               onClick={() => {
                 setActiveSection(section);
                 document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              <span style={styles.navButtonText}>
+              <span className="navButtonText">
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </span>
-              {activeSection === section && <span style={styles.navButtonUnderline} />}
+              {activeSection === section && <span className="navButtonUnderline" />}
             </button>
           ))}
         </div>
       </nav>
-      <div className='main'>
+      
+      <div className="main">
         {/* Animated Gradient Overlay */}
-        <div style={{
-          ...styles.gradientOverlay,
-          background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(138, 43, 226, 0.15) 0%, transparent 50%)`
-        }} />
+        <div 
+          className="gradientOverlay"
+          style={{
+            background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(138, 43, 226, 0.15) 0%, transparent 50%)`
+          }} 
+        />
 
         {/* Floating Particles */}
-        <div style={styles.particleContainer}>
+        <div className="particleContainer">
           {particles.map(particle => (
             <div
               key={particle.id}
+              className="particle"
               style={{
-                ...styles.particle,
                 left: `${particle.x}%`,
                 top: `${particle.y}%`,
                 width: `${particle.size}px`,
@@ -129,44 +123,46 @@ function App() {
         </div>
 
         {/* Main Content */}
-        <main style={{ ...styles.main }}>
-          <div id='home' style={styles.section}>
-            <div style={{ ...styles.heroContent, ...parallaxStyle }}>
-              <div style={{ ...styles.nameContainer, ...parallaxStyle }}>
-                <h2 style={styles.babyName}>{memorialContent.name}</h2>
-
+        <main className="main">
+          <div id="home" className="section">
+            <div className="heroContent" style={parallaxStyle}>
+              <div className="nameContainer" style={parallaxStyle}>
+                <h2 className="babyName">{memorialContent.name}</h2>
               </div>
-              <div style={{ ...styles.nameContainer, ...parallaxStyle }}>
-                <div style={styles.wingLeft}>✨</div>
-                <h2 style={{ ...styles.babyName, fontSize: '2rem' }}>{memorialContent.subtext}</h2>
-                <div style={styles.wingRight}>✨</div>
+              
+              <div className="nameContainer" style={parallaxStyle}>
+                <div className="wingLeft">✨</div>
+                <h2 className="babyName" style={{ fontSize: '2rem' }}>
+                  {memorialContent.subtext}
+                </h2>
+                <div className="wingRight">✨</div>
               </div>
 
               <div style={parallaxStyle}>
-                <div style={styles.dateLabel}>Born into Heaven</div>
-                <div style={styles.dateValue}>{memorialContent.dateOfBirth}</div>
+                <div className="dateLabel">Born into Heaven</div>
+                <div className="dateValue">{memorialContent.dateOfBirth}</div>
               </div>
 
-              <div style={styles.divider}>
-                <span style={styles.dividerIcon}>🕊️</span>
+              <div className="divider">
+                <span className="dividerIcon">🕊️</span>
               </div>
 
-              <p style={styles.introduction}>{memorialContent.introduction}</p>
+              <p className="introduction">{memorialContent.introduction}</p>
             </div>
           </div>
 
-          <div id='memories' style={{ ...styles.section, ...styles.blurBackdrop }}>
-            <div style={styles.sectionHeader}>
-              <blockquote className='quotes'>
-                <div style={styles.lightBox}>
+          <div id="memories" className="section blurBackdrop">
+            <div className="sectionHeader">
+              <blockquote className="quotes">
+                <div className="lightBox">
                   {memorialContent.poem.map((line, i) => (
-                    <p key={i} style={textAnim(i)}>
+                    <p key={i} className="poemLine">
                       {line}
                     </p>
                   ))}
                   <hr style={{ width: 50 }} />
                   {memorialContent.tributes.map((line, i) => (
-                    <p key={i} style={textAnim()}>
+                    <p key={i} className="poemLine">
                       {line}
                     </p>
                   ))}
@@ -175,13 +171,13 @@ function App() {
             </div>
           </div>
 
-          <div id='tributes' style={styles.section}>
-            <div style={styles.sectionHeader}>
-              <h2 style={styles.sectionTitle}>Share Your Tribute</h2>
-              <p style={styles.sectionSubtitle}>Add your words of love and remembrance</p>
+          <div id="tributes" className="section">
+            <div className="sectionHeader">
+              <h2 className="sectionTitle">Share Your Tribute</h2>
+              <p className="sectionSubtitle">Add your words of love and remembrance</p>
             </div>
 
-            <div style={styles.visitorTributeContainer}>
+            <div className="visitorTributeContainer">
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
@@ -202,38 +198,38 @@ function App() {
                     console.error(error);
                   }
                 }}
-                style={styles.tributeForm}
+                className="tributeForm"
               >
                 <input
                   type="text"
                   placeholder="Your Name"
                   value={newTribute.name}
                   onChange={(e) => setNewTribute(prev => ({ ...prev, name: e.target.value }))}
-                  style={styles.tributeInput}
+                  className="tributeInput"
                   required
                 />
                 <textarea
                   placeholder="Share your message..."
                   value={newTribute.message}
                   onChange={(e) => setNewTribute(prev => ({ ...prev, message: e.target.value }))}
-                  style={styles.tributeTextarea}
+                  className="tributeTextarea"
                   required
                 />
-                <button type="submit" style={styles.tributeSubmitButton}>
+                <button type="submit" className="tributeSubmitButton">
                   Share Your Tribute
                 </button>
               </form>
             </div>
 
-            <div style={{ ...styles.section, ...styles.blurBackdrop }}>
-              <div style={styles.visitorTributesList}>
+            <div className="section blurBackdrop">
+              <div className="visitorTributesList">
                 {visitorTributes.map((tribute) => (
-                  <div key={tribute.id} style={styles.visitorTributeCard}>
-                    <div style={styles.visitorTributeTitle}>
-                      <p style={styles.visitorTributeName}>{tribute.name}</p>
+                  <div key={tribute.id} className="visitorTributeCard">
+                    <div className="visitorTributeTitle">
+                      <p className="visitorTributeName">{tribute.name}</p>
                       {new Date(tribute.created_at).toLocaleDateString()}
                     </div>
-                    <p style={styles.visitorTributeMessage}>{tribute.message}</p>
+                    <p className="visitorTributeMessage">{tribute.message}</p>
                   </div>
                 ))}
               </div>
@@ -242,17 +238,16 @@ function App() {
         </main>
 
         {/* Footer */}
-        <footer style={styles.footer}>
-          <div style={styles.footerContent}>
-            <div style={styles.footerIcon}>✦</div>
-            <p style={styles.footerText}>Forever Loved • Never Forgotten • Always in Our Hearts</p>
-            <div style={styles.footerIcon}>✦</div>
+        <footer className="footer">
+          <div className="footerContent">
+            <div className="footerIcon">✦</div>
+            <p className="footerText">Forever Loved • Never Forgotten • Always in Our Hearts</p>
+            <div className="footerIcon">✦</div>
           </div>
         </footer>
       </div>
     </>
   );
-};
+}
 
-
-export default App
+export default App;
