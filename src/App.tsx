@@ -149,7 +149,10 @@ function App() {
             <button
               key={section}
               style={activeSection === section ? { ...styles.navButton, ...styles.navButtonActive } : styles.navButton}
-              onClick={() => setActiveSection(section)}
+              onClick={() => {
+                setActiveSection(section);
+                document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               <span style={styles.navButtonText}>
                 {section.charAt(0).toUpperCase() + section.slice(1)}
