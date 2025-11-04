@@ -295,10 +295,9 @@ export const styles = {
     marginTop: '50px'
   } as React.CSSProperties,
   poemLine: {
-    fontSize: '22px',
+    fontSize: '1.3rem',
     lineHeight: '2',
-    color: 'rgba(255, 255, 255, 0.85)',
-    margin: '10px 0',
+    margin: '5px 0',
     fontStyle: 'italic',
     animation: 'fade-in 1s ease-out',
     textAlign: 'center'
@@ -330,132 +329,6 @@ export const styles = {
     color: 'rgba(255, 255, 255, 0.6)',
     letterSpacing: '2px',
     fontStyle: 'italic'
-  } as React.CSSProperties,
-  // memoryCard: {
-  //   position: 'relative',
-  //   padding: '40px 30px',
-  //   background: 'rgba(255, 255, 255, 0.03)',
-  //   borderRadius: '25px',
-  //   border: '1px solid rgba(255, 255, 255, 0.1)',
-  //   backdropFilter: 'blur(20px)',
-  //   transition: 'all 0.4s ease',
-  //   animation: 'fade-in-up 0.8s ease-out',
-  //   overflow: 'hidden'
-  // } as React.CSSProperties,
-  // memoryCardGlow: {
-  //   position: 'absolute',
-  //   top: '-50%',
-  //   left: '-50%',
-  //   width: '200%',
-  //   height: '200%',
-  //   background: 'radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 50%)',
-  //   opacity: 0,
-  //   transition: 'opacity 0.4s ease',
-  //   pointerEvents: 'none'
-  // } as React.CSSProperties,
-  // memoryIconContainer: {
-  //   marginBottom: '25px'
-  // } as React.CSSProperties,
-  // memoryIconLarge: {
-  //   fontSize: '60px',
-  //   display: 'inline-block',
-  //   animation: 'float-gentle 3s ease-in-out infinite',
-  //   filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))'
-  // } as React.CSSProperties,
-  // memoryTitle: {
-  //   fontSize: '28px',
-  //   marginBottom: '15px',
-  //   fontWeight: 400,
-  //   color: '#d4af37',
-  //   letterSpacing: '1px'
-  // } as React.CSSProperties,
-  // memoryDivider: {
-  //   width: '60px',
-  //   height: '2px',
-  //   background: 'linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent)',
-  //   margin: '20px 0'
-  // } as React.CSSProperties,
-  // memoryContent: {
-  //   fontSize: '18px',
-  //   lineHeight: '1.8',
-  //   color: 'rgba(255, 255, 255, 0.8)',
-  //   marginBottom: '20px'
-  // } as React.CSSProperties,
-  // memoryFooter: {
-  //   textAlign: 'center',
-  //   marginTop: '20px'
-  // } as React.CSSProperties,
-  // memoryFooterIcon: {
-  //   color: 'rgba(212, 175, 55, 0.5)',
-  //   fontSize: '20px'
-  // } as React.CSSProperties,
-  tributeContainer: {
-    position: 'relative',
-    maxWidth: '900px',
-    margin: '0 auto',
-    padding: '60px 50px',
-    background: 'rgba(255, 255, 255, 0.04)',
-    borderRadius: '30px',
-    border: '1px solid rgba(212, 175, 55, 0.2)',
-    backdropFilter: 'blur(20px)',
-    textAlign: 'center',
-    overflow: 'hidden'
-  } as React.CSSProperties,
-  tributeGlow: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '80%',
-    height: '80%',
-    background: 'radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%)',
-    filter: 'blur(40px)',
-    zIndex: 0
-  } as React.CSSProperties,
-  tributeIconContainer: {
-    position: 'relative',
-    zIndex: 1,
-    marginBottom: '30px'
-  } as React.CSSProperties,
-  tributeIcon: {
-    fontSize: '80px',
-    display: 'inline-block',
-    animation: 'pulse-glow 3s ease-in-out infinite',
-    filter: 'drop-shadow(0 0 30px rgba(255, 255, 255, 0.4))'
-  } as React.CSSProperties,
-  quoteOpen: {
-    position: 'absolute',
-    top: '60px',
-    left: '30px',
-    fontSize: '120px',
-    color: 'rgba(212, 175, 55, 0.2)',
-    fontFamily: 'Georgia, serif',
-    lineHeight: 1,
-    zIndex: 0
-  } as React.CSSProperties,
-  quoteClose: {
-    position: 'absolute',
-    bottom: '60px',
-    right: '30px',
-    fontSize: '120px',
-    color: 'rgba(212, 175, 55, 0.2)',
-    fontFamily: 'Georgia, serif',
-    lineHeight: 1,
-    zIndex: 0
-  } as React.CSSProperties,
-  heartContainer: {
-    position: 'relative',
-    zIndex: 1,
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '25px',
-    marginTop: '40px',
-    fontSize: '35px'
-  } as React.CSSProperties,
-  floatingHeart: {
-    display: 'inline-block',
-    animation: 'float-heart 3s ease-in-out infinite',
-    filter: 'drop-shadow(0 0 15px rgba(100, 149, 237, 0.5))'
   } as React.CSSProperties,
   footer: {
     position: 'relative',

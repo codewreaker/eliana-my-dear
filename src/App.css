@@ -15,3 +15,33 @@ div[style*="memoryCard"]:hover {
 div[style*="memoryCard"]:hover>div[style*="memoryCardGlow"] {
   opacity: 1;
 }
+
+/*
+Source - https://stackoverflow.com/questions/27426045/big-quotation-marks-styled-in-html-css
+Posted by Reeze Cornelius
+Retrieved 04/11/2025, License - CC-BY-SA 4.0
+*/
+
+blockquote.quotes {
+  border: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-bottom: -30px;
+}
+
+blockquote.quotes div {
+  font-size: 3rem;
+  line-height: 4rem; 
+  font-weight: bold;
+}
+
+
+blockquote.quotes div:before {
+  content: open-quote;
+  color: #b8b3c057;
+
+}
+
+blockquote.quotes div:after {
+  content: close-quote;
+  color: #b8b3c057;
+} 
