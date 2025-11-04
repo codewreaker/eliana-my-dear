@@ -158,7 +158,7 @@ export const styles = {
     zIndex: 100,
     padding: '20px',
     backdropFilter: 'blur(20px)',
-    background: 'rgba(10, 10, 26, 0.8)',
+    background: 'transparent',
     borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
     boxShadow: '0 4px 30px rgba(0, 0, 0, 0.3)'
   } as React.CSSProperties,
@@ -220,16 +220,16 @@ export const styles = {
     marginBottom: '40px'
   } as React.CSSProperties,
   wingLeft: {
-    fontSize: '40px',
+    fontSize: '1.5rem',
     animation: 'pulse-glow 2s ease-in-out infinite'
   } as React.CSSProperties,
   wingRight: {
-    fontSize: '40px',
+    fontSize: '1.5rem',
     animation: 'pulse-glow 2s ease-in-out infinite',
     animationDelay: '1s'
   } as React.CSSProperties,
   babyName: {
-    fontSize: '56px',
+    fontSize: 'clamp(2rem, 4vw, 3rem)',
     fontWeight: 400,
     margin: 0,
     background: 'linear-gradient(135deg, #fff 0%, #d4af37 50%, #fff 100%)',
@@ -239,7 +239,7 @@ export const styles = {
     letterSpacing: '3px',
     textShadow: '0 0 40px rgba(212, 175, 55, 0.3)'
   } as React.CSSProperties,
-  dateBox: {
+  lightBox: {
     display: 'inline-block',
     padding: '20px 40px',
     background: 'rgba(255, 255, 255, 0.05)',
@@ -247,6 +247,14 @@ export const styles = {
     border: '1px solid rgba(212, 175, 55, 0.3)',
     backdropFilter: 'blur(10px)',
     marginBottom: '50px'
+  } as React.CSSProperties,
+  lightboxText: {
+    zIndex: 1,
+    fontSize: '1.8rem',
+    lineHeight: '2',
+    color: 'rgba(255, 255, 255, 0.9)',
+    fontStyle: 'italic',
+    fontWeight: 300
   } as React.CSSProperties,
   dateLabel: {
     fontSize: '14px',
@@ -271,7 +279,7 @@ export const styles = {
     animation: 'float-gentle 3s ease-in-out infinite'
   } as React.CSSProperties,
   introduction: {
-    fontSize: '24px',
+    fontSize: '1.2rem',
     lineHeight: '1.9',
     color: 'rgba(255, 255, 255, 0.9)',
     marginBottom: '50px',
@@ -297,7 +305,7 @@ export const styles = {
   } as React.CSSProperties,
   lightBeam: {
     position: 'absolute',
-    top: 0,
+    top: '40vh',
     left: '50%',
     transform: 'translateX(-50%)',
     width: '2px',
@@ -323,70 +331,64 @@ export const styles = {
     letterSpacing: '2px',
     fontStyle: 'italic'
   } as React.CSSProperties,
-  memoriesGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-    gap: '40px',
-    marginTop: '60px'
-  } as React.CSSProperties,
-  memoryCard: {
-    position: 'relative',
-    padding: '40px 30px',
-    background: 'rgba(255, 255, 255, 0.03)',
-    borderRadius: '25px',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-    backdropFilter: 'blur(20px)',
-    transition: 'all 0.4s ease',
-    animation: 'fade-in-up 0.8s ease-out',
-    overflow: 'hidden'
-  } as React.CSSProperties,
-  memoryCardGlow: {
-    position: 'absolute',
-    top: '-50%',
-    left: '-50%',
-    width: '200%',
-    height: '200%',
-    background: 'radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 50%)',
-    opacity: 0,
-    transition: 'opacity 0.4s ease',
-    pointerEvents: 'none'
-  } as React.CSSProperties,
-  memoryIconContainer: {
-    marginBottom: '25px'
-  } as React.CSSProperties,
-  memoryIconLarge: {
-    fontSize: '60px',
-    display: 'inline-block',
-    animation: 'float-gentle 3s ease-in-out infinite',
-    filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))'
-  } as React.CSSProperties,
-  memoryTitle: {
-    fontSize: '28px',
-    marginBottom: '15px',
-    fontWeight: 400,
-    color: '#d4af37',
-    letterSpacing: '1px'
-  } as React.CSSProperties,
-  memoryDivider: {
-    width: '60px',
-    height: '2px',
-    background: 'linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent)',
-    margin: '20px 0'
-  } as React.CSSProperties,
-  memoryContent: {
-    fontSize: '18px',
-    lineHeight: '1.8',
-    color: 'rgba(255, 255, 255, 0.8)',
-    marginBottom: '20px'
-  } as React.CSSProperties,
-  memoryFooter: {
-    textAlign: 'center',
-    marginTop: '20px'
-  } as React.CSSProperties,
-  memoryFooterIcon: {
-    color: 'rgba(212, 175, 55, 0.5)',
-    fontSize: '20px'
-  } as React.CSSProperties,
+  // memoryCard: {
+  //   position: 'relative',
+  //   padding: '40px 30px',
+  //   background: 'rgba(255, 255, 255, 0.03)',
+  //   borderRadius: '25px',
+  //   border: '1px solid rgba(255, 255, 255, 0.1)',
+  //   backdropFilter: 'blur(20px)',
+  //   transition: 'all 0.4s ease',
+  //   animation: 'fade-in-up 0.8s ease-out',
+  //   overflow: 'hidden'
+  // } as React.CSSProperties,
+  // memoryCardGlow: {
+  //   position: 'absolute',
+  //   top: '-50%',
+  //   left: '-50%',
+  //   width: '200%',
+  //   height: '200%',
+  //   background: 'radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 50%)',
+  //   opacity: 0,
+  //   transition: 'opacity 0.4s ease',
+  //   pointerEvents: 'none'
+  // } as React.CSSProperties,
+  // memoryIconContainer: {
+  //   marginBottom: '25px'
+  // } as React.CSSProperties,
+  // memoryIconLarge: {
+  //   fontSize: '60px',
+  //   display: 'inline-block',
+  //   animation: 'float-gentle 3s ease-in-out infinite',
+  //   filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))'
+  // } as React.CSSProperties,
+  // memoryTitle: {
+  //   fontSize: '28px',
+  //   marginBottom: '15px',
+  //   fontWeight: 400,
+  //   color: '#d4af37',
+  //   letterSpacing: '1px'
+  // } as React.CSSProperties,
+  // memoryDivider: {
+  //   width: '60px',
+  //   height: '2px',
+  //   background: 'linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent)',
+  //   margin: '20px 0'
+  // } as React.CSSProperties,
+  // memoryContent: {
+  //   fontSize: '18px',
+  //   lineHeight: '1.8',
+  //   color: 'rgba(255, 255, 255, 0.8)',
+  //   marginBottom: '20px'
+  // } as React.CSSProperties,
+  // memoryFooter: {
+  //   textAlign: 'center',
+  //   marginTop: '20px'
+  // } as React.CSSProperties,
+  // memoryFooterIcon: {
+  //   color: 'rgba(212, 175, 55, 0.5)',
+  //   fontSize: '20px'
+  // } as React.CSSProperties,
   tributeContainer: {
     position: 'relative',
     maxWidth: '900px',
@@ -440,16 +442,6 @@ export const styles = {
     fontFamily: 'Georgia, serif',
     lineHeight: 1,
     zIndex: 0
-  } as React.CSSProperties,
-  tributeText: {
-    position: 'relative',
-    zIndex: 1,
-    fontSize: '26px',
-    lineHeight: '2',
-    color: 'rgba(255, 255, 255, 0.9)',
-    fontStyle: 'italic',
-    fontWeight: 300,
-    marginBottom: '40px'
   } as React.CSSProperties,
   heartContainer: {
     position: 'relative',

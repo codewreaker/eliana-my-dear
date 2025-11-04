@@ -3,31 +3,18 @@ import './App.css'
 import { styles } from './styles.js'
 import type { Tribute, NewTribute } from './types';
 
+
+import LightRays from './LightRays';
+
 const memorialContent = {
-  name: "Our Precious Angel",
+  name: "E · L · I · A · N · A",
+  subtext: "Our Precious Angel",
   dateOfBirth: "October 17, 2025",
   introduction: "Forever in our hearts, eternally in heaven. Though your time with us was brief, your impact is eternal.",
   poem: [
     "An angel in the book of life wrote down our baby's birth,",
     "Then whispered as she closed the book,",
     "'Too beautiful for Earth.'"
-  ],
-  memories: [
-    {
-      title: "The Day We Met You",
-      content: "October 17th, 2025 - A day forever etched in our hearts. Though we couldn't hold you for long, we felt your presence deeply.",
-      icon: "🌟"
-    },
-    {
-      title: "Your Legacy",
-      content: "You taught us the depths of love in the briefest moment. Your spirit lives on in everything we do.",
-      icon: "💫"
-    },
-    {
-      title: "Forever Loved",
-      content: "In our hearts, you live on. Every sunrise reminds us of your light, every sunset of your peace.",
-      icon: "🌸"
-    }
   ],
   tributes: "You are our little angel, watching over us from heaven. Your wings were ready, but our hearts were not. We carry you with us always, in every breath, every heartbeat, every moment of love we share."
 };
@@ -159,6 +146,8 @@ function App() {
 
   return (
     <>
+      {/* Canvas Background */}
+      <canvas ref={canvasRef} style={styles.canvas} />
       {/* Navigation */}
       <nav style={styles.nav}>
         <div style={styles.navContainer}>
@@ -179,9 +168,22 @@ function App() {
           ))}
         </div>
       </nav>
-      <div className='main'>
-        {/* Canvas Background */}
-        <canvas ref={canvasRef} style={styles.canvas} />
+      <div className='main' id='home'>
+        <div style={{ width: '100%', height: '800px', position: 'absolute' }}>
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#00ffff"
+            raysSpeed={1.5}
+            lightSpread={1}
+            rayLength={1.2}
+            fadeDistance={2}
+            followMouse={true}
+            mouseInfluence={0.1}
+            noiseAmount={0.1}
+            distortion={0.05}
+            className="custom-rays"
+          />
+        </div>
 
         {/* Animated Gradient Overlay */}
         <div style={{
@@ -209,174 +211,154 @@ function App() {
         </div>
 
         {/* Header with Parallax */}
-        <header style={{ ...styles.header, ...parallaxStyle }}>
+        {/* <header style={{ ...styles.header, ...parallaxStyle }}>
           <div style={styles.headerGlow} />
-          <div style={styles.angelIconLarge}>👼</div>
+          <div style={styles.angelIconLarge}>👼🏾</div>
           <h1 style={styles.headerTitle}>E · L · I · A · N · A</h1>
           <div style={styles.decorativeLine}>
             <span style={styles.decorativeDot}>✦</span>
             <span style={styles.decorativeDash}>—</span>
             <span style={styles.decorativeDot}>✦</span>
           </div>
-        </header>
+        </header> */}
 
         {/* Main Content */}
-        <main style={styles.main}>
-            <div id='home' style={styles.section}>
-              <div style={styles.heroContent}>
-                <div style={styles.nameContainer}>
-                  <div style={styles.wingLeft}>✨</div>
-                  <h2 style={styles.babyName}>{memorialContent.name}</h2>
-                  <div style={styles.wingRight}>✨</div>
-                </div>
+        <main style={{ ...styles.main }}>
+          <div style={styles.section}>
+            <div style={styles.heroContent}>
+              <div style={{ ...styles.nameContainer }}>
+                <h2 style={styles.babyName}>{memorialContent.name}</h2>
 
-                <div style={styles.dateBox}>
-                  <div style={styles.dateLabel}>Born into Heaven</div>
-                  <div style={styles.dateValue}>{memorialContent.dateOfBirth}</div>
-                </div>
-
-                <div style={styles.divider}>
-                  <span style={styles.dividerIcon}>🕊️</span>
-                </div>
-
-                <p style={styles.introduction}>{memorialContent.introduction}</p>
-
-                <div style={styles.poemContainer}>
-                  {memorialContent.poem.map((line, i) => (
-                    <p key={i} style={{ ...styles.poemLine, animationDelay: `${i * 0.3}s` }}>
-                      {line}
-                    </p>
-                  ))}
-                </div>
-
-                <div style={styles.lightBeam} />
               </div>
+              <div style={{ ...styles.nameContainer }}>
+                <div style={styles.wingLeft}>✨</div>
+                <h2 style={{ ...styles.babyName, fontSize: '2rem' }}>{memorialContent.subtext}</h2>
+                <div style={styles.wingRight}>✨</div>
+              </div>
+
+              <div>
+                <div style={styles.dateLabel}>Born into Heaven</div>
+                <div style={styles.dateValue}>{memorialContent.dateOfBirth}</div>
+              </div>
+
+              <div style={styles.divider}>
+                <span style={styles.dividerIcon}>🕊️</span>
+              </div>
+
+              <p style={styles.introduction}>{memorialContent.introduction}</p>
+
+              <div style={styles.lightBox}>
+                {memorialContent.poem.map((line, i) => (
+                  <p key={i} style={{ ...styles.poemLine, animationDelay: `${i * 0.3}s` }}>
+                    {line}
+                  </p>
+                ))}
+              </div>
+
+            </div>
+          </div>
+
+          <div style={styles.lightBeam} />
+          <div id='memories' style={styles.section}>
+            <div style={styles.sectionHeader}>
+              <h2 style={styles.sectionTitle}>Cherished Memories</h2>
+              <p style={styles.sectionSubtitle}>Moments that live forever in our hearts</p>
+            </div>
+          </div>
+
+          <div id='tributes' style={styles.section}>
+            <div style={styles.sectionHeader}>
+              <h2 style={styles.sectionTitle}>A Parent's Tribute</h2>
+              <p style={styles.sectionSubtitle}>Words from the heart</p>
             </div>
 
-
-            <div id='memories' style={styles.section}>
-              <div style={styles.sectionHeader}>
-                <h2 style={styles.sectionTitle}>Cherished Memories</h2>
-                <p style={styles.sectionSubtitle}>Moments that live forever in our hearts</p>
+            <div style={styles.tributeContainer}>
+              <div style={styles.tributeGlow} />
+              <div style={styles.tributeIconContainer}>
+                <span style={styles.tributeIcon}>💝</span>
               </div>
+              <div style={styles.quoteOpen}>"</div>
+              <p style={styles.lightboxText}>{memorialContent.tributes}</p>
+              <div style={styles.quoteClose}>"</div>
 
-              <div style={styles.memoriesGrid}>
-                {memorialContent.memories.map((memory, index) => (
-                  <div
-                    key={index}
+              <div style={styles.heartContainer}>
+                {[0, 1, 2, 3, 4].map(i => (
+                  <span
+                    key={i}
                     style={{
-                      ...styles.memoryCard,
-                      animationDelay: `${index * 0.2}s`
+                      ...styles.floatingHeart,
+                      animationDelay: `${i * 0.4}s`
                     }}
                   >
-                    <div style={styles.memoryCardGlow} />
-                    <div style={styles.memoryIconContainer}>
-                      <span style={styles.memoryIconLarge}>{memory.icon}</span>
-                    </div>
-                    <h3 style={styles.memoryTitle}>{memory.title}</h3>
-                    <div style={styles.memoryDivider} />
-                    <p style={styles.memoryContent}>{memory.content}</p>
-                    <div style={styles.memoryFooter}>
-                      <span style={styles.memoryFooterIcon}>✦</span>
+                    💙
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div style={styles.section}>
+            <div style={styles.sectionHeader}>
+              <h2 style={styles.sectionTitle}>Share Your Tribute</h2>
+              <p style={styles.sectionSubtitle}>Add your words of love and remembrance</p>
+            </div>
+
+            <div style={styles.visitorTributeContainer}>
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  try {
+                    const response = await fetch('/api/tributes', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify(newTribute),
+                    });
+                    if (response.ok) {
+                      const tribute = await response.json();
+                      setVisitorTributes(prev => [tribute, ...prev]);
+                      setNewTribute({ name: '', message: '' });
+                    }
+                  } catch (error) {
+                    console.error('Failed to submit tribute:', error);
+                  }
+                }}
+                style={styles.tributeForm}
+              >
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={newTribute.name}
+                  onChange={(e) => setNewTribute(prev => ({ ...prev, name: e.target.value }))}
+                  style={styles.tributeInput}
+                  required
+                />
+                <textarea
+                  placeholder="Share your message..."
+                  value={newTribute.message}
+                  onChange={(e) => setNewTribute(prev => ({ ...prev, message: e.target.value }))}
+                  style={styles.tributeTextarea}
+                  required
+                />
+                <button type="submit" style={styles.tributeSubmitButton}>
+                  Share Your Tribute
+                </button>
+              </form>
+
+              <div style={styles.visitorTributesList}>
+                {visitorTributes.map((tribute) => (
+                  <div key={tribute.id} style={styles.visitorTributeCard}>
+                    <p style={styles.visitorTributeName}>{tribute.name}</p>
+                    <p style={styles.visitorTributeMessage}>{tribute.message}</p>
+                    <div style={styles.visitorTributeDate}>
+                      {new Date(tribute.created_at).toLocaleDateString()}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-
-            <div id='tributes' style={styles.section}>
-              <div style={styles.sectionHeader}>
-                <h2 style={styles.sectionTitle}>A Parent's Tribute</h2>
-                <p style={styles.sectionSubtitle}>Words from the heart</p>
-              </div>
-
-              <div style={styles.tributeContainer}>
-                <div style={styles.tributeGlow} />
-                <div style={styles.tributeIconContainer}>
-                  <span style={styles.tributeIcon}>💝</span>
-                </div>
-                <div style={styles.quoteOpen}>"</div>
-                <p style={styles.tributeText}>{memorialContent.tributes}</p>
-                <div style={styles.quoteClose}>"</div>
-
-                <div style={styles.heartContainer}>
-                  {[0, 1, 2, 3, 4].map(i => (
-                    <span
-                      key={i}
-                      style={{
-                        ...styles.floatingHeart,
-                        animationDelay: `${i * 0.4}s`
-                      }}
-                    >
-                      💙
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div style={styles.section}>
-              <div style={styles.sectionHeader}>
-                <h2 style={styles.sectionTitle}>Share Your Tribute</h2>
-                <p style={styles.sectionSubtitle}>Add your words of love and remembrance</p>
-              </div>
-
-              <div style={styles.visitorTributeContainer}>
-                <form
-                  onSubmit={async (e) => {
-                    e.preventDefault();
-                    try {
-                      const response = await fetch('/api/tributes', {
-                        method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(newTribute),
-                      });
-                      if (response.ok) {
-                        const tribute = await response.json();
-                        setVisitorTributes(prev => [tribute, ...prev]);
-                        setNewTribute({ name: '', message: '' });
-                      }
-                    } catch (error) {
-                      console.error('Failed to submit tribute:', error);
-                    }
-                  }}
-                  style={styles.tributeForm}
-                >
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={newTribute.name}
-                    onChange={(e) => setNewTribute(prev => ({ ...prev, name: e.target.value }))}
-                    style={styles.tributeInput}
-                    required
-                  />
-                  <textarea
-                    placeholder="Share your message..."
-                    value={newTribute.message}
-                    onChange={(e) => setNewTribute(prev => ({ ...prev, message: e.target.value }))}
-                    style={styles.tributeTextarea}
-                    required
-                  />
-                  <button type="submit" style={styles.tributeSubmitButton}>
-                    Share Your Tribute
-                  </button>
-                </form>
-
-                <div style={styles.visitorTributesList}>
-                  {visitorTributes.map((tribute: any) => (
-                    <div key={tribute.id} style={styles.visitorTributeCard}>
-                      <p style={styles.visitorTributeName}>{tribute.name}</p>
-                      <p style={styles.visitorTributeMessage}>{tribute.message}</p>
-                      <div style={styles.visitorTributeDate}>
-                        {new Date(tribute.created_at).toLocaleDateString()}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+          </div>
         </main>
 
         {/* Footer */}
