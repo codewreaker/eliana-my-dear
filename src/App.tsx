@@ -6,6 +6,7 @@ import type { Tribute, NewTribute } from './types';
 
 import LightRays from './LightRays';
 import useMouseMove from './util/useMouseMove.js';
+
 const memorialContent = {
   name: "E · L · I · A · N · A",
   subtext: "Our Precious Angel",
@@ -27,7 +28,12 @@ const memorialContent = {
 function App() {
 
   const [activeSection, setActiveSection] = useState('home');
-  const [visitorTributes, setVisitorTributes] = useState<Tribute[]>([]);
+  const [visitorTributes, setVisitorTributes] = useState<Tribute[]>([{
+    created_at: (new Date()).toISOString(),
+    id: 1,
+    message: 'Lorem Ipsum dit dolor',
+    name: 'Israel'
+  }]);
   const [newTribute, setNewTribute] = useState<NewTribute>({ name: '', message: '' });
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { mousePos, particles, scrollY } = useMouseMove(canvasRef);
@@ -138,7 +144,7 @@ function App() {
         {/* Main Content */}
         <main style={{ ...styles.main }}>
           <div style={styles.section}>
-            <div style={{...styles.heroContent, ...parallaxStyle}}>
+            <div style={{ ...styles.heroContent, ...parallaxStyle }}>
               <div style={{ ...styles.nameContainer, ...parallaxStyle }}>
                 <h2 style={styles.babyName}>{memorialContent.name}</h2>
 
@@ -185,10 +191,6 @@ function App() {
 
 
           <div id='tributes' style={styles.section}>
-
-          </div>
-
-          <div style={styles.section}>
             <div style={styles.sectionHeader}>
               <h2 style={styles.sectionTitle}>Share Your Tribute</h2>
               <p style={styles.sectionSubtitle}>Add your words of love and remembrance</p>
