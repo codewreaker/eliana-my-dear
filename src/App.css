@@ -1,0 +1,11 @@
+
+
+div[style*="memoryCard"]:hover {
+  transform: translateY(-10px);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 20px 60px rgba(138, 43, 226, 0.3);
+}
+
+div[style*="memoryCard"]:hover>div[style*="memoryCardGlow"] {
+  opacity: 1;
+}
