@@ -49,7 +49,7 @@ function App() {
           setVisitorTributes(data);
         }
       } catch (error) {
-        console.error('Failed to load tributes:', error);
+        console.error(error);
       }
     };
     loadTributes();
@@ -214,7 +214,7 @@ function App() {
                       setNewTribute({ name: '', message: '' });
                     }
                   } catch (error) {
-                    console.error('Failed to submit tribute:', error);
+                    console.error(error);
                   }
                 }}
                 style={styles.tributeForm}
