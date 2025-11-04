@@ -1,4 +1,4 @@
-const styles = {
+export const styles = {
   canvas: {
     position: 'fixed',
     top: 0,

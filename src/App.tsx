@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
+import { styles } from './styles.js'
 
 const memorialContent = {
   name: "Our Precious Angel",
@@ -48,7 +49,7 @@ function App() {
     duration: number;
     delay: number;
   }>>([]);
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -85,7 +86,7 @@ function App() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d')!;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -96,7 +97,7 @@ function App() {
       opacity: Math.random()
     }));
 
-    let animationId;
+    let animationId: number;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -140,47 +141,7 @@ function App() {
   };
 
   return (
-    <div className='main'>
-      {/* Canvas Background */}
-      <canvas ref={canvasRef} style={styles.canvas} />
-
-      {/* Animated Gradient Overlay */}
-      <div style={{
-        ...styles.gradientOverlay,
-        background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(138, 43, 226, 0.15) 0%, transparent 50%)`
-      }} />
-
-      {/* Floating Particles */}
-      <div style={styles.particleContainer}>
-        {particles.map(particle => (
-          <div
-            key={particle.id}
-            style={{
-              ...styles.particle,
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              opacity: particle.opacity,
-              animationDuration: `${particle.duration}s`,
-              animationDelay: `${particle.delay}s`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Header with Parallax */}
-      <header style={{ ...styles.header, ...parallaxStyle }}>
-        <div style={styles.headerGlow} />
-        <div style={styles.angelIconLarge}>👼</div>
-        <h1 style={styles.headerTitle}>In Loving Memory</h1>
-        <div style={styles.decorativeLine}>
-          <span style={styles.decorativeDot}>✦</span>
-          <span style={styles.decorativeDash}>—</span>
-          <span style={styles.decorativeDot}>✦</span>
-        </div>
-      </header>
-
+    <>
       {/* Navigation */}
       <nav style={styles.nav}>
         <div style={styles.navContainer}>
@@ -198,117 +159,153 @@ function App() {
           ))}
         </div>
       </nav>
+      <div className='main'>
+        {/* Canvas Background */}
+        <canvas ref={canvasRef} style={styles.canvas} />
 
-      {/* Main Content */}
-      <main style={styles.main}>
-        {activeSection === 'home' && (
-          <div style={styles.section}>
-            <div style={styles.heroContent}>
-              <div style={styles.nameContainer}>
-                <div style={styles.wingLeft}>✨</div>
-                <h2 style={styles.babyName}>{memorialContent.name}</h2>
-                <div style={styles.wingRight}>✨</div>
-              </div>
+        {/* Animated Gradient Overlay */}
+        <div style={{
+          ...styles.gradientOverlay,
+          background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(138, 43, 226, 0.15) 0%, transparent 50%)`
+        }} />
 
-              <div style={styles.dateBox}>
-                <div style={styles.dateLabel}>Born into Heaven</div>
-                <div style={styles.dateValue}>{memorialContent.dateOfBirth}</div>
-              </div>
+        {/* Floating Particles */}
+        <div style={styles.particleContainer}>
+          {particles.map(particle => (
+            <div
+              key={particle.id}
+              style={{
+                ...styles.particle,
+                left: `${particle.x}%`,
+                top: `${particle.y}%`,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                opacity: particle.opacity,
+                animationDuration: `${particle.duration}s`,
+                animationDelay: `${particle.delay}s`
+              }}
+            />
+          ))}
+        </div>
 
-              <div style={styles.divider}>
-                <span style={styles.dividerIcon}>🕊️</span>
-              </div>
-
-              <p style={styles.introduction}>{memorialContent.introduction}</p>
-
-              <div style={styles.poemContainer}>
-                {memorialContent.poem.map((line, i) => (
-                  <p key={i} style={{ ...styles.poemLine, animationDelay: `${i * 0.3}s` }}>
-                    {line}
-                  </p>
-                ))}
-              </div>
-
-              <div style={styles.lightBeam} />
-            </div>
+        {/* Header with Parallax */}
+        <header style={{ ...styles.header, ...parallaxStyle }}>
+          <div style={styles.headerGlow} />
+          <div style={styles.angelIconLarge}>👼</div>
+          <h1 style={styles.headerTitle}>E · L · I · A · N · A</h1>
+          <div style={styles.decorativeLine}>
+            <span style={styles.decorativeDot}>✦</span>
+            <span style={styles.decorativeDash}>—</span>
+            <span style={styles.decorativeDot}>✦</span>
           </div>
-        )}
+        </header>
 
-        {activeSection === 'memories' && (
-          <div style={styles.section}>
-            <div style={styles.sectionHeader}>
-              <h2 style={styles.sectionTitle}>Cherished Memories</h2>
-              <p style={styles.sectionSubtitle}>Moments that live forever in our hearts</p>
-            </div>
-
-            <div style={styles.memoriesGrid}>
-              {memorialContent.memories.map((memory, index) => (
-                <div
-                  key={index}
-                  style={{
-                    ...styles.memoryCard,
-                    animationDelay: `${index * 0.2}s`
-                  }}
-                >
-                  <div style={styles.memoryCardGlow} />
-                  <div style={styles.memoryIconContainer}>
-                    <span style={styles.memoryIconLarge}>{memory.icon}</span>
-                  </div>
-                  <h3 style={styles.memoryTitle}>{memory.title}</h3>
-                  <div style={styles.memoryDivider} />
-                  <p style={styles.memoryContent}>{memory.content}</p>
-                  <div style={styles.memoryFooter}>
-                    <span style={styles.memoryFooterIcon}>✦</span>
-                  </div>
+        {/* Main Content */}
+        <main style={styles.main}>
+            <div id='home' style={styles.section}>
+              <div style={styles.heroContent}>
+                <div style={styles.nameContainer}>
+                  <div style={styles.wingLeft}>✨</div>
+                  <h2 style={styles.babyName}>{memorialContent.name}</h2>
+                  <div style={styles.wingRight}>✨</div>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
 
-        {activeSection === 'tribute' && (
-          <div style={styles.section}>
-            <div style={styles.sectionHeader}>
-              <h2 style={styles.sectionTitle}>A Parent's Tribute</h2>
-              <p style={styles.sectionSubtitle}>Words from the heart</p>
-            </div>
+                <div style={styles.dateBox}>
+                  <div style={styles.dateLabel}>Born into Heaven</div>
+                  <div style={styles.dateValue}>{memorialContent.dateOfBirth}</div>
+                </div>
 
-            <div style={styles.tributeContainer}>
-              <div style={styles.tributeGlow} />
-              <div style={styles.tributeIconContainer}>
-                <span style={styles.tributeIcon}>💝</span>
+                <div style={styles.divider}>
+                  <span style={styles.dividerIcon}>🕊️</span>
+                </div>
+
+                <p style={styles.introduction}>{memorialContent.introduction}</p>
+
+                <div style={styles.poemContainer}>
+                  {memorialContent.poem.map((line, i) => (
+                    <p key={i} style={{ ...styles.poemLine, animationDelay: `${i * 0.3}s` }}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+
+                <div style={styles.lightBeam} />
               </div>
-              <div style={styles.quoteOpen}>"</div>
-              <p style={styles.tributeText}>{memorialContent.tribute}</p>
-              <div style={styles.quoteClose}>"</div>
+            </div>
 
-              <div style={styles.heartContainer}>
-                {[0, 1, 2, 3, 4].map(i => (
-                  <span
-                    key={i}
+
+            <div id='memories' style={styles.section}>
+              <div style={styles.sectionHeader}>
+                <h2 style={styles.sectionTitle}>Cherished Memories</h2>
+                <p style={styles.sectionSubtitle}>Moments that live forever in our hearts</p>
+              </div>
+
+              <div style={styles.memoriesGrid}>
+                {memorialContent.memories.map((memory, index) => (
+                  <div
+                    key={index}
                     style={{
-                      ...styles.floatingHeart,
-                      animationDelay: `${i * 0.4}s`
+                      ...styles.memoryCard,
+                      animationDelay: `${index * 0.2}s`
                     }}
                   >
-                    💙
-                  </span>
+                    <div style={styles.memoryCardGlow} />
+                    <div style={styles.memoryIconContainer}>
+                      <span style={styles.memoryIconLarge}>{memory.icon}</span>
+                    </div>
+                    <h3 style={styles.memoryTitle}>{memory.title}</h3>
+                    <div style={styles.memoryDivider} />
+                    <p style={styles.memoryContent}>{memory.content}</p>
+                    <div style={styles.memoryFooter}>
+                      <span style={styles.memoryFooterIcon}>✦</span>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
-          </div>
-        )}
-      </main>
 
-      {/* Footer */}
-      <footer style={styles.footer}>
-        <div style={styles.footerContent}>
-          <div style={styles.footerIcon}>✦</div>
-          <p style={styles.footerText}>Forever Loved • Never Forgotten • Always in Our Hearts</p>
-          <div style={styles.footerIcon}>✦</div>
-        </div>
-      </footer>
-    </div>
+            <div id='tribute' style={styles.section}>
+              <div style={styles.sectionHeader}>
+                <h2 style={styles.sectionTitle}>A Parent's Tribute</h2>
+                <p style={styles.sectionSubtitle}>Words from the heart</p>
+              </div>
+
+              <div style={styles.tributeContainer}>
+                <div style={styles.tributeGlow} />
+                <div style={styles.tributeIconContainer}>
+                  <span style={styles.tributeIcon}>💝</span>
+                </div>
+                <div style={styles.quoteOpen}>"</div>
+                <p style={styles.tributeText}>{memorialContent.tribute}</p>
+                <div style={styles.quoteClose}>"</div>
+
+                <div style={styles.heartContainer}>
+                  {[0, 1, 2, 3, 4].map(i => (
+                    <span
+                      key={i}
+                      style={{
+                        ...styles.floatingHeart,
+                        animationDelay: `${i * 0.4}s`
+                      }}
+                    >
+                      💙
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+        </main>
+
+        {/* Footer */}
+        <footer style={styles.footer}>
+          <div style={styles.footerContent}>
+            <div style={styles.footerIcon}>✦</div>
+            <p style={styles.footerText}>Forever Loved • Never Forgotten • Always in Our Hearts</p>
+            <div style={styles.footerIcon}>✦</div>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 };
 
