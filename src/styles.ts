@@ -1,4 +1,76 @@
 export const styles = {
+  // Visitor Tributes Styles
+  visitorTributeContainer: {
+    maxWidth: '800px',
+    margin: '0 auto',
+    padding: '2rem',
+    background: 'rgba(255, 255, 255, 0.05)',
+    borderRadius: '15px',
+    backdropFilter: 'blur(10px)'
+  },
+  tributeForm: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    gap: '1rem',
+    marginBottom: '2rem'
+  },
+  tributeInput: {
+    padding: '1rem',
+    fontSize: '1rem',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    border: '1px solid rgba(255, 255, 255, 0.2)',
+    borderRadius: '8px',
+    color: 'white'
+  },
+  tributeTextarea: {
+    padding: '1rem',
+    fontSize: '1rem',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    border: '1px solid rgba(255, 255, 255, 0.2)',
+    borderRadius: '8px',
+    color: 'white',
+    minHeight: '120px',
+    resize: 'vertical' as const
+  },
+  tributeSubmitButton: {
+    padding: '1rem',
+    fontSize: '1rem',
+    backgroundColor: 'rgba(138, 43, 226, 0.6)',
+    border: 'none',
+    borderRadius: '8px',
+    color: 'white',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    ':hover': {
+      backgroundColor: 'rgba(138, 43, 226, 0.8)'
+    }
+  },
+  visitorTributesList: {
+    display: 'grid',
+    gap: '1.5rem'
+  },
+  visitorTributeCard: {
+    padding: '1.5rem',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: '10px',
+    border: '1px solid rgba(255, 255, 255, 0.1)'
+  },
+  visitorTributeName: {
+    fontSize: '1.1rem',
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: '0.5rem'
+  },
+  visitorTributeMessage: {
+    fontSize: '1rem',
+    color: 'rgba(255, 255, 255, 0.9)',
+    lineHeight: '1.6',
+    marginBottom: '1rem'
+  },
+  visitorTributeDate: {
+    fontSize: '0.9rem',
+    color: 'rgba(255, 255, 255, 0.6)'
+  },
   canvas: {
     position: 'fixed',
     top: 0,

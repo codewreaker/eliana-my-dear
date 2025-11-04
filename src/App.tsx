@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 import { styles } from './styles.js'
+import type { Tribute, NewTribute } from './types';
 
 const memorialContent = {
   name: "Our Precious Angel",
@@ -30,7 +29,7 @@ const memorialContent = {
       icon: "🌸"
     }
   ],
-  tribute: "You are our little angel, watching over us from heaven. Your wings were ready, but our hearts were not. We carry you with us always, in every breath, every heartbeat, every moment of love we share."
+  tributes: "You are our little angel, watching over us from heaven. Your wings were ready, but our hearts were not. We carry you with us always, in every breath, every heartbeat, every moment of love we share."
 };
 
 
@@ -40,6 +39,8 @@ function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [visitorTributes, setVisitorTributes] = useState<Tribute[]>([]);
+  const [newTribute, setNewTribute] = useState<NewTribute>({ name: '', message: '' });
   const [particles, setParticles] = useState<Array<{
     id: number;
     x: number;
@@ -51,9 +52,25 @@ function App() {
   }>>([]);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
+  // Load visitor tributes
+  useEffect(() => {
+    const loadTributes = async () => {
+      try {
+        const response = await fetch('/api/tributes');
+        if (response.ok) {
+          const data = await response.json();
+          setVisitorTributes(data);
+        }
+      } catch (error) {
+        console.error('Failed to load tributes:', error);
+      }
+    };
+    loadTributes();
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePos({
         x: (e.clientX / window.innerWidth) * 100,
         y: (e.clientY / window.innerHeight) * 100
@@ -145,7 +162,7 @@ function App() {
       {/* Navigation */}
       <nav style={styles.nav}>
         <div style={styles.navContainer}>
-          {['home', 'memories', 'tribute'].map((section) => (
+          {['home', 'memories', 'tributes'].map((section) => (
             <button
               key={section}
               style={activeSection === section ? { ...styles.navButton, ...styles.navButtonActive } : styles.navButton}
@@ -267,7 +284,7 @@ function App() {
               </div>
             </div>
 
-            <div id='tribute' style={styles.section}>
+            <div id='tributes' style={styles.section}>
               <div style={styles.sectionHeader}>
                 <h2 style={styles.sectionTitle}>A Parent's Tribute</h2>
                 <p style={styles.sectionSubtitle}>Words from the heart</p>
@@ -279,7 +296,7 @@ function App() {
                   <span style={styles.tributeIcon}>💝</span>
                 </div>
                 <div style={styles.quoteOpen}>"</div>
-                <p style={styles.tributeText}>{memorialContent.tribute}</p>
+                <p style={styles.tributeText}>{memorialContent.tributes}</p>
                 <div style={styles.quoteClose}>"</div>
 
                 <div style={styles.heartContainer}>
@@ -293,6 +310,69 @@ function App() {
                     >
                       💙
                     </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div style={styles.section}>
+              <div style={styles.sectionHeader}>
+                <h2 style={styles.sectionTitle}>Share Your Tribute</h2>
+                <p style={styles.sectionSubtitle}>Add your words of love and remembrance</p>
+              </div>
+
+              <div style={styles.visitorTributeContainer}>
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    try {
+                      const response = await fetch('/api/tributes', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(newTribute),
+                      });
+                      if (response.ok) {
+                        const tribute = await response.json();
+                        setVisitorTributes(prev => [tribute, ...prev]);
+                        setNewTribute({ name: '', message: '' });
+                      }
+                    } catch (error) {
+                      console.error('Failed to submit tribute:', error);
+                    }
+                  }}
+                  style={styles.tributeForm}
+                >
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={newTribute.name}
+                    onChange={(e) => setNewTribute(prev => ({ ...prev, name: e.target.value }))}
+                    style={styles.tributeInput}
+                    required
+                  />
+                  <textarea
+                    placeholder="Share your message..."
+                    value={newTribute.message}
+                    onChange={(e) => setNewTribute(prev => ({ ...prev, message: e.target.value }))}
+                    style={styles.tributeTextarea}
+                    required
+                  />
+                  <button type="submit" style={styles.tributeSubmitButton}>
+                    Share Your Tribute
+                  </button>
+                </form>
+
+                <div style={styles.visitorTributesList}>
+                  {visitorTributes.map((tribute: any) => (
+                    <div key={tribute.id} style={styles.visitorTributeCard}>
+                      <p style={styles.visitorTributeName}>{tribute.name}</p>
+                      <p style={styles.visitorTributeMessage}>{tribute.message}</p>
+                      <div style={styles.visitorTributeDate}>
+                        {new Date(tribute.created_at).toLocaleDateString()}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
