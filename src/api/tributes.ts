@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response } from 'nitro/h3';
 import pool from './db';
 
 export async function getTributes(req: Request, res: Response) {
