@@ -46,9 +46,12 @@ export const styles = {
     }
   },
   visitorTributesList: {
-    display: 'grid',
-    gap: '1.5rem'
-  },
+    display: 'flex',
+    gap: '1.5rem',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    alignContent: 'space-around'
+  } as React.CSSProperties,
   visitorTributeCard: {
     padding: '1.5rem',
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
@@ -200,13 +203,18 @@ export const styles = {
   main: {
     position: 'relative',
     zIndex: 10,
-    maxWidth: '1200px',
     margin: '0 auto',
     padding: '60px 20px 120px'
   } as React.CSSProperties,
   section: {
+    width: '100%',
+    padding: 10,
     animation: 'fade-in-up 0.8s ease-out'
   } as React.CSSProperties,
+  blurBackdrop: {
+    backdropFilter: 'blur(10px)',
+    backgroundColor: 'rgba(0,0,0,0.08)'
+  },
   heroContent: {
     textAlign: 'center',
     maxWidth: '900px',

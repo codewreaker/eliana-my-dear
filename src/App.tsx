@@ -65,7 +65,6 @@ function App() {
 
   return (
     <>
-      {/* {createStatDisplay()} */}
       {/* Canvas Background */}
       <canvas ref={canvasRef} style={styles.canvas} />
       <div style={{ width: '100%', height: '800px', position: 'absolute' }}>
@@ -103,7 +102,7 @@ function App() {
           ))}
         </div>
       </nav>
-      <div className='main' id='home'>
+      <div className='main'>
         {/* Animated Gradient Overlay */}
         <div style={{
           ...styles.gradientOverlay,
@@ -129,21 +128,9 @@ function App() {
           ))}
         </div>
 
-        {/* Header with Parallax */}
-        {/* <header style={{ ...styles.header, ...parallaxStyle }}>
-          <div style={styles.headerGlow} />
-          <div style={styles.angelIconLarge}>👼🏾</div>
-          <h1 style={styles.headerTitle}>E · L · I · A · N · A</h1>
-          <div style={styles.decorativeLine}>
-            <span style={styles.decorativeDot}>✦</span>
-            <span style={styles.decorativeDash}>—</span>
-            <span style={styles.decorativeDot}>✦</span>
-          </div>
-        </header> */}
-
         {/* Main Content */}
         <main style={{ ...styles.main }}>
-          <div style={styles.section}>
+          <div id='home' style={styles.section}>
             <div style={{ ...styles.heroContent, ...parallaxStyle }}>
               <div style={{ ...styles.nameContainer, ...parallaxStyle }}>
                 <h2 style={styles.babyName}>{memorialContent.name}</h2>
@@ -168,7 +155,7 @@ function App() {
             </div>
           </div>
 
-          <div id='memories' style={styles.section}>
+          <div id='memories' style={{ ...styles.section, ...styles.blurBackdrop }}>
             <div style={styles.sectionHeader}>
               <blockquote className='quotes'>
                 <div style={styles.lightBox}>
@@ -179,7 +166,7 @@ function App() {
                   ))}
                   <hr style={{ width: 50 }} />
                   {memorialContent.tributes.map((line, i) => (
-                    <p key={i} style={textAnim(i)}>
+                    <p key={i} style={textAnim()}>
                       {line}
                     </p>
                   ))}
@@ -187,8 +174,6 @@ function App() {
               </blockquote>
             </div>
           </div>
-
-
 
           <div id='tributes' style={styles.section}>
             <div style={styles.sectionHeader}>
@@ -238,7 +223,9 @@ function App() {
                   Share Your Tribute
                 </button>
               </form>
+            </div>
 
+            <div style={{ ...styles.section, ...styles.blurBackdrop }}>
               <div style={styles.visitorTributesList}>
                 {visitorTributes.map((tribute) => (
                   <div key={tribute.id} style={styles.visitorTributeCard}>
