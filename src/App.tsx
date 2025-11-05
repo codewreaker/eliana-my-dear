@@ -4,6 +4,7 @@ import type { Tribute, NewTribute } from './types';
 
 import LightRays from './LightRays';
 import useMouseMove from './util/useMouseMove.js';
+import EmailForm from './EmailForm/index.js';
 
 const memorialContent = {
   name: "E · L · I · A · N · A",
@@ -18,12 +19,14 @@ const memorialContent = {
     "You are our little angel, watching over us from heaven.",
     "Your wings were ready, but our hearts were not. We carry you with us always,",
     "in every breath, every heartbeat, every moment of love we share.",
-    "",
+    " ",
     "- Love Mum and Dad"
   ]
 };
 
+
 function App() {
+  const [openForm, setOpenForm] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
   const [visitorTributes, setVisitorTributes] = useState<Tribute[]>([{
     created_at: (new Date()).toISOString(),
@@ -174,11 +177,12 @@ function App() {
           </div>
 
           <div id="tributes" className="section">
-            <div className="sectionHeader">
+            <div className="sectionHeader" onClick={() => setOpenForm(prev => !prev)}>
               <h2 className="sectionTitle">Share Your Tribute</h2>
               <p className="sectionSubtitle">Add your words of love and remembrance</p>
             </div>
 
+            {openForm && <EmailForm />}
             <div className="visitorTributeContainer">
               <form
                 onSubmit={async (e) => {
@@ -252,4 +256,8 @@ function App() {
   );
 }
 
+
+
 export default App;
+
+
