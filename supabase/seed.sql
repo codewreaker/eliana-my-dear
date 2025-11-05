@@ -24,9 +24,62 @@ CREATE POLICY "Allow public insert access" ON tributes
 CREATE INDEX IF NOT EXISTS idx_tributes_created_at ON tributes(created_at DESC);
 
 -- Seed data
-INSERT INTO tributes (name, email, message) VALUES
-  ('Uncle Denzel', 'denzel@theheartbeatmusic.com', 'Beautiful soul, our dearly beloved, You set our hearts aflame with heaven''s hush – With joy and peace, you brushed our days. To us you are near, To us you remain dear. We behold your smile with eyes of faith, Framed in light where angels dwell. With love that lingers and hope that heals, To us you are near, To us you remain dear. We lift our gaze to God Most High, In thanks and trembling gratitude. For though your breath was brief on earth, Your being blooms beyond our years. To us you are near, To us you remain dear. Beautiful soul, you are not far – Heaven holds what earth could not. Your memory sings in our hearts'' quiet chambers. To us you are near, To us you remain dear.'),
-  ('Adjoa Adutwum', 'adjoafosua@hotmail.com', 'My sweet Eliana, Though your time with us was brief, your presence has changed my heart forever. From the moment I knew of you, I loved you deeply, fiercely, completely. You were prayed for, dreamt of, and already so cherished before you ever took your first breath. And though you never opened your eyes to this world, you opened ours to eternity. You were My Eliana "God has answered." And though His answer came wrapped in mystery and pain, I trust His heart even when I cannot trace His hand. I will forever carry you in mine. In the quiet moments, I imagine your tiny fingers, your peaceful face, and I rest in the thought that you are safe in the arms of Jesus – where there is no more pain, no more tears, and no more sorrow. You will never know the struggles of this world, only the beauty of Heaven. And one day, when my race is finished, I will meet you again whole, radiant, and smiling. Until then, your name will live in every prayer, every song, and every heartbeat that remembers you. Rest, My Eliana. You were loved beyond words, and missed beyond measure. You will forever be the answer I didn''t expect, but the miracle I''ll never forget. I will always and forever love you. Your Godmother Adjoa 💙'),
-  ('APOSTLE KOFI ODURO OFORI-AGYEMAN-PREMPEH', 'kofi_agyemanprempeh@yahoo.co.uk', 'Ani Saba Cohen Gadol At Eliana Cohenet Gadolet Ani Lo Mevin Eliana At Mevinah????? Ani Lo Beseder Ani Lo Beseder Gamol Lo Tov, Lo Tov, Lo Tov Lamah? Lamah?? Lamah??? Naim Meod Gadol, Ki Yeshua Hamashiac Melakim Eliana Beverkasha Lamah, Lamah, Lamah, Lamah,Lamah??????? Lehitraout L''Shamayim Eliana, Lama, Lama, Lama? Anilomargish Matsuyan Atmargisha Metsuyan??? Ooooooooooooooooh Eliana Lamah? Lamah??? Lamah???? Lehitraout BaShamayim !!! Am Yisrael Chai!!!!!! Bashanah Yerushalayim!!!! Sabah Cohen Gadol'),
-  ('Aunty Kristen', 'kristenfaprempeh@gmail.com', 'Hi my lovely angel, Aunty Kristen here☺️ I longed to meet and watch you grow like your other uncles and aunties but as God would have it, He called you back to Himself. You will always be in our hearts and we celebrate your little life! Forever in my heart Eliana 🤍🤎'),
-  ('Nana Opoku Agyeman-Prempeh', 'nana@growforme.com', 'Tribute to Baby Elaina I met Elaina while she was still in mummy''s tummy. Her presence was felt throughout the house as mummy carried her wherever she went. Every morning, I saw mummy carefully walk down the staircase, carrying you with such love and grace, her body protecting you from the world. You were always safe with her. Daddy, on the other hand, gave up his spot on the bed just for you. He would rather sleep on the floor, because your comfort meant more to him than anything else. You were his little treasure, and he loved you deeply even before meeting you. As the fifth member of our home, you sat quietly most of the time, but your little kicks and jolts reminded us that you were there, full of life and joy. Your brothers, Paa Kwesi and Nana Osei, could not wait to add you to the team. The three musketeers would have been a formidable trio. Paa and Nana would have protected you with their lives every single day. Their love for you is more than you could ever imagine. When we visited Grandma''s house, your presence brought laughter and anticipation. Grandma looked forward to meeting you, her new bundle of joy to fill the space Great-Grandma had left behind. When I went shopping, I couldn''t resist getting you a gift a little dress and a baby wrap, the perfect welcome for our precious girl. You were a gift to all of us. I thought I would see you in a few weeks after I left, and yes, we did see you, but heaven had its own plans. God called you home before we could hear your voice, your whisper, or your cry. Our hearts are broken, mine, Naana''s, Nana Kofi''s, and Aunty Angie''s. Yet we find comfort knowing that you are still with us in spirit. You were loved deeply, and you always will be. Rest well, sweet Elaina. We love you beyond words.');
+INSERT INTO
+    "public"."tributes" ("id", "name", "email", "message", "created_at")
+VALUES
+    (
+        '1',
+        'Uncle Denzel',
+        'denzel@theheartbeatmusic.com',
+        'Beautiful soul, our dearly beloved, You set our hearts aflame with heaven''s hush – With joy and peace, you brushed our days. To us you are near, To us you remain dear. We behold your smile with eyes of faith, Framed in light where angels dwell. With love that lingers and hope that heals, To us you are near, To us you remain dear. We lift our gaze to God Most High, In thanks and trembling gratitude. For though your breath was brief on earth, Your being blooms beyond our years. To us you are near, To us you remain dear. Beautiful soul, you are not far – Heaven holds what earth could not. Your memory sings in our hearts'' quiet chambers. To us you are near, To us you remain dear.',
+        '2025-11-05 21:31:09.89473+00'
+    ),
+    (
+        '2',
+        'Adjoa Adutwum',
+        'adjoafosua@hotmail.com',
+        'My sweet Eliana, Though your time with us was brief, your presence has changed my heart forever. From the moment I knew of you, I loved you deeply, fiercely, completely. You were prayed for, dreamt of, and already so cherished before you ever took your first breath. And though you never opened your eyes to this world, you opened ours to eternity. You were My Eliana "God has answered." And though His answer came wrapped in mystery and pain, I trust His heart even when I cannot trace His hand. I will forever carry you in mine. In the quiet moments, I imagine your tiny fingers, your peaceful face, and I rest in the thought that you are safe in the arms of Jesus – where there is no more pain, no more tears, and no more sorrow. You will never know the struggles of this world, only the beauty of Heaven. And one day, when my race is finished, I will meet you again whole, radiant, and smiling. Until then, your name will live in every prayer, every song, and every heartbeat that remembers you. Rest, My Eliana. You were loved beyond words, and missed beyond measure. You will forever be the answer I didn''t expect, but the miracle I''ll never forget. I will always and forever love you. Your Godmother Adjoa 💙',
+        '2025-11-05 21:31:09.89473+00'
+    ),
+    (
+        '3',
+        'APOSTLE KOFI ODURO OFORI-AGYEMAN-PREMPEH',
+        'kofi_agyemanprempeh@yahoo.co.uk',
+        'Ani Saba Cohen Gadol At Eliana Cohenet Gadolet Ani Lo Mevin Eliana At Mevinah????? Ani Lo Beseder Ani Lo Beseder Gamol Lo Tov, Lo Tov, Lo Tov Lamah? Lamah?? Lamah??? Naim Meod Gadol, Ki Yeshua Hamashiac Melakim Eliana Beverkasha Lamah, Lamah, Lamah, Lamah,Lamah??????? Lehitraout L''Shamayim Eliana, Lama, Lama, Lama? Anilomargish Matsuyan Atmargisha Metsuyan??? Ooooooooooooooooh Eliana Lamah? Lamah??? Lamah???? Lehitraout BaShamayim !!! Am Yisrael Chai!!!!!! Bashanah Yerushalayim!!!! Sabah Cohen Gadol',
+        '2025-11-05 21:31:09.89473+00'
+    ),
+    (
+        '4',
+        'Aunty Kristen',
+        'kristenfaprempeh@gmail.com',
+        'Hi my lovely angel, Aunty Kristen here☺️ I longed to meet and watch you grow like your other uncles and aunties but as God would have it, He called you back to Himself. You will always be in our hearts and we celebrate your little life! Forever in my heart Eliana 🤍🤎',
+        '2025-11-05 21:31:09.89473+00'
+    ),
+    (
+        '5',
+        'Nana Opoku Agyeman-Prempeh',
+        'nana@growforme.com',
+        'Tribute to Baby Elaina I met Elaina while she was still in mummy''s tummy. Her presence was felt throughout the house as mummy carried her wherever she went. Every morning, I saw mummy carefully walk down the staircase, carrying you with such love and grace, her body protecting you from the world. You were always safe with her. Daddy, on the other hand, gave up his spot on the bed just for you. He would rather sleep on the floor, because your comfort meant more to him than anything else. You were his little treasure, and he loved you deeply even before meeting you. As the fifth member of our home, you sat quietly most of the time, but your little kicks and jolts reminded us that you were there, full of life and joy. Your brothers, Paa Kwesi and Nana Osei, could not wait to add you to the team. The three musketeers would have been a formidable trio. Paa and Nana would have protected you with their lives every single day. Their love for you is more than you could ever imagine. When we visited Grandma''s house, your presence brought laughter and anticipation. Grandma looked forward to meeting you, her new bundle of joy to fill the space Great-Grandma had left behind. When I went shopping, I couldn''t resist getting you a gift a little dress and a baby wrap, the perfect welcome for our precious girl. You were a gift to all of us. I thought I would see you in a few weeks after I left, and yes, we did see you, but heaven had its own plans. God called you home before we could hear your voice, your whisper, or your cry. Our hearts are broken, mine, Naana''s, Nana Kofi''s, and Aunty Angie''s. Yet we find comfort knowing that you are still with us in spirit. You were loved deeply, and you always will be. Rest well, sweet Elaina. We love you beyond words.',
+        '2025-11-05 21:31:09.89473+00'
+    ),
+    (
+        '6',
+        'Aunty Gaby',
+        'gaby_gabriella@hotmail.co.uk',
+        'Our beautiful Eliana! I know you are in heaven comforted by our Heavenly Father, yet I am still so jealous that I didn''t get to see your beautiful face. I take joy in the fact that the Lord saw you were too perfect for this world. Right now your dad and mum miss you greatly, but deep in their hearts they know you are waiting for them to join you in the peace and comfort of our Father. Keep cheering your parents on and encouraging your siblings! We won''t let you down! We will make you proud! Love aunty Gaby ',
+        '2025-11-05 21:54:02.620057+00'
+    ),
+    (
+        '7',
+        'Anna Andoh Owusu',
+        'anndebest@live.com',
+        'Our baby Eliana, we had longed to see you baby girl. I was just waiting to tease your dad about how you look nothing like him. God however had different plans for you and although we are heartbroken, we know you are in a better place looking over mum and dad and your big brothers cheering them over! You are in good hands over there little angel. One day auntie will see you and get all the cuddles we couldn’t get here on earth. I guess you really were too perfect for Earth. Love you ',
+        '2025-11-05 21:55:33.305835+00'
+    ),
+    (
+        '8',
+        'Edward A. ',
+        'enagyeman@gmail.com',
+        'We wished to have had you here with us, but God knows best. We might not understand it all, but we are still trusting God. Farewell, till we meet again at Jesus’ feet. ',
+        '2025-11-05 21:58:41.169168+00'
+    );
