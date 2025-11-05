@@ -3,8 +3,7 @@ import { defineHandler, HTTPError } from 'nitro/h3';
 import supabase from '../../utils/supabase';
 import type { Tribute } from '../../src/types';
 
-export default defineHandler(async (event) => {
-  console.log(event)
+export default defineHandler(async () => {
   try {
     const { data: tributes, error } = await supabase
       .from('tributes')

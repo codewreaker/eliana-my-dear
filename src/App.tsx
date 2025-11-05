@@ -200,7 +200,7 @@ function App() {
               <p className="sectionSubtitle">Add your words of love and remembrance</p>
             </div>
 
-            {openForm && <EmailForm />}
+            {openForm && <EmailForm onSuccess={newData => setVisitorTributes(prev=>([...prev, newData]))} />}
 
             <div className="section blurBackdrop">
               <div className="visitorTributesList">

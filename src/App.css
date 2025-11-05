@@ -99,11 +99,29 @@ div[style*="memoryCard"]:hover>div[style*="memoryCardGlow"] {
   box-shadow: 0 6px 25px rgba(138, 43, 226, 0.5);
 }
 
+/* Masonry Layout */
 .visitorTributesList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
+  column-gap: 2rem;
   margin-top: 3rem;
+}
+
+/* Responsive column count */
+@media (min-width: 1200px) {
+  .visitorTributesList {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .visitorTributesList {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .visitorTributesList {
+    column-count: 1;
+  }
 }
 
 .visitorTributeCard {
@@ -113,10 +131,13 @@ div[style*="memoryCard"]:hover>div[style*="memoryCardGlow"] {
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
-  min-height: 180px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin-bottom: 2rem;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  overflow-y: scroll;
 }
 
 .visitorTributeCard:hover {
@@ -637,5 +658,6 @@ blockquote.quotes div:after {
 
   .visitorTributeCard {
     padding: 1.5rem;
+    max-height: 400px;
   }
 }

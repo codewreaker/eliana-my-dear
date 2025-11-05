@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type FC, useState } from "react";
 import { isDevelopment } from "std-env";
+import type { Tribute } from "../types";
 
 const API_URL = isDevelopment ? 'http://localhost:3001/api/send-email' : '/api/send-email';
 
@@ -28,7 +29,7 @@ async function createTribute(body: string) {
     }
 }
 
-const EmailForm: FC = () => {
+const EmailForm: FC<{ onSuccess: (res: Tribute) => void }> = ({ onSuccess }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -54,7 +55,9 @@ const EmailForm: FC = () => {
 
         try {
             const data = await createTribute(body);
-            if (data.id) {
+            console.log(data)
+            if (data?.id) {
+                onSuccess(data)
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: {
@@ -73,7 +76,6 @@ const EmailForm: FC = () => {
 
             setIsSubmitting(false);
             setSubmitted(true);
-
             // Reset after 3 seconds
             setTimeout(() => {
                 setSubmitted(false);
