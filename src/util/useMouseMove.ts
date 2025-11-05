@@ -29,7 +29,34 @@ const useMouseMove = (canvasRef: RefObject<HTMLCanvasElement | null>) => {
 
 
     useEffect(() => {
-        const handleScroll = () => setScrollY(window.scrollY);
+        let currentScrollY = window.scrollY;
+        let targetScrollY = window.scrollY;
+        let rafId: number | null = null;
+        
+        const smoothScroll = () => {
+            // Calculate the difference between target and current position
+            const diff = targetScrollY - currentScrollY;
+            
+            // Apply easing with a small minimum movement to prevent sticking
+            if (Math.abs(diff) > 0.01) {
+                currentScrollY += diff * 0.15; // Increased from 0.1 to 0.15 for more responsive movement
+                setScrollY(currentScrollY);
+                rafId = requestAnimationFrame(smoothScroll);
+            } else {
+                // Snap to exact position when very close
+                currentScrollY = targetScrollY;
+                setScrollY(currentScrollY);
+                rafId = null;
+            }
+        };
+
+        const handleScroll = () => {
+            targetScrollY = window.scrollY; // Update target position
+            if (!rafId) {
+                rafId = requestAnimationFrame(smoothScroll);
+            }
+        };
+
         const handleMouseMove = (e: MouseEvent) => {
             setMousePos({
                 x: (e.clientX / window.innerWidth) * 100,
@@ -56,6 +83,9 @@ const useMouseMove = (canvasRef: RefObject<HTMLCanvasElement | null>) => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('mousemove', handleMouseMove);
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+            }
         };
     }, []);
 

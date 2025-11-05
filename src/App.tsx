@@ -129,11 +129,12 @@ function App() {
         {/* Main Content */}
         <main>
           <div id="home" className="section">
-            <div className="heroContent" style={parallaxStyle}>
-              <div className="nameContainer" style={parallaxStyle}>
+            <div className="heroContent parallax-element" style={parallaxStyle}>
+              <div className="nameContainer parallax-element" style={parallaxStyle}>
                 <img
                   src={memorialContent.image}
                   alt="Eliana"
+                  className="parallax-element"
                   style={{
                     width: '250px',
                     height: '250px',
@@ -146,7 +147,7 @@ function App() {
                   }}
                 />
               </div>
-              <div className="nameContainer" style={parallaxStyle}>
+              <div className="nameContainer parallax-element" style={parallaxStyle}>
                 <h2 className="babyName">{memorialContent.name}</h2>
               </div>
 

@@ -40,7 +40,7 @@ app.post('/api/send-email', async (c) => {
     to,
     replyTo,
     subject,
-    html: emailTemplate(name, from, subject, message),
+    html: emailTemplate(name, replyTo, subject, message),
   };
 
   try {

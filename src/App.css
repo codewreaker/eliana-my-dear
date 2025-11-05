@@ -6,6 +6,15 @@ main {
   z-index: 10;
 }
 
+/* Parallax Effects */
+.parallax-element {
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 0.1s cubic-bezier(0.33, 1, 0.68, 1);
+  pointer-events: none;
+}
+
 
 
 div[style*="memoryCard"]:hover {
