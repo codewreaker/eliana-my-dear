@@ -10,8 +10,10 @@ const memorialContent = {
   subtext: "Our Precious Angel",
   dateOfBirth: "October 17, 2025",
   introduction: "Forever in our hearts, eternally in heaven. Though your time with us was brief, your impact is eternal.",
-  poem: "An angel in the book of life wrote down our baby's birth, Then whispered as she closed the book,\
-  'Too beautiful for Earth.".split(','),
+  poem: [
+    "An angel in the book of life wrote down our baby's birth, Then whispered as she closed the book",
+    "Too beautiful for Earth."
+  ],
   tributes: [
     "You are our little angel, watching over us from heaven.",
     "Your wings were ready, but our hearts were not. We carry you with us always,",
@@ -72,7 +74,7 @@ function App() {
           className="custom-rays"
         />
       </div>
-      
+
       {/* Navigation */}
       <nav className="nav">
         <div className="navContainer">
@@ -93,14 +95,14 @@ function App() {
           ))}
         </div>
       </nav>
-      
+
       <div className="main">
         {/* Animated Gradient Overlay */}
-        <div 
+        <div
           className="gradientOverlay"
           style={{
             background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(138, 43, 226, 0.15) 0%, transparent 50%)`
-          }} 
+          }}
         />
 
         {/* Floating Particles */}
@@ -129,7 +131,7 @@ function App() {
               <div className="nameContainer" style={parallaxStyle}>
                 <h2 className="babyName">{memorialContent.name}</h2>
               </div>
-              
+
               <div className="nameContainer" style={parallaxStyle}>
                 <div className="wingLeft">✨</div>
                 <h2 className="babyName" style={{ fontSize: '2rem' }}>
@@ -156,13 +158,13 @@ function App() {
               <blockquote className="quotes">
                 <div className="lightBox">
                   {memorialContent.poem.map((line, i) => (
-                    <p key={i} className="poemLine">
+                    <p key={i}>
                       {line}
                     </p>
                   ))}
                   <hr style={{ width: 50 }} />
                   {memorialContent.tributes.map((line, i) => (
-                    <p key={i} className="poemLine">
+                    <p key={i}>
                       {line}
                     </p>
                   ))}
