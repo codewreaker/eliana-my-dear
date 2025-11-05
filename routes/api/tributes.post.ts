@@ -6,11 +6,12 @@ import type { Tribute } from '../../src/types';
 interface TributeBody {
   name: string;
   message: string;
+  email?:string;
 }
 
 export default defineHandler(async (event) => {
   try {
-    const body = (await readBody<TributeBody>(event)) ?? { name: '', message: '' };
+    const body = (await readBody<TributeBody>(event)) ?? { name: '', message: '', email:'' };
 
     if (!body.name || !body.message) {
       throw new HTTPError({
@@ -23,7 +24,8 @@ export default defineHandler(async (event) => {
       .from('tributes')
       .insert({
         name: body.name,
-        message: body.message
+        message: body.message,
+        email: body.email
       })
       .select()
       .single();
