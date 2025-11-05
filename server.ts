@@ -109,3 +109,5 @@ const emailTemplate = (name: string, email: string, subject: string, message: st
     </div>
 </body>
 </html>`.trim();
+
+export default app;
