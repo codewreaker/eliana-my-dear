@@ -19,7 +19,7 @@ div[style*="memoryCard"]:hover>div[style*="memoryCardGlow"] {
 /* Visitor Tribute Sections */
 .visitorTributeContainer {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 3rem 1.5rem;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 20px;
