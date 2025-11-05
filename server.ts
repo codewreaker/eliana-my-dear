@@ -31,7 +31,7 @@ app.post('/api/send-email', async (c) => {
 
 
   const from = `Contact Form <${process.env.EMAIL_USER}>`;
-  const to = process.env.EMAIL_USER; // Change to your receiving email address
+  const to = `${process.env.EMAIL_MAIN_USER}, ${process.env.EMAIL_CC_USER || 'israel.agyeman.prempeh@gmail.com'}`; // Change to your receiving email address
   const replyTo = email;
   const subject = `New Contact Form Submission from ${name}`;
 

@@ -122,7 +122,7 @@ const EmailForm: FC = () => {
                         {isSubmitting ? (
                             <>
                                 <span className="loading-spinner"></span>
-                                Creating ticket...
+                                Sending Email...
                             </>
                         ) : (
                             'Send Message'
