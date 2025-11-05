@@ -8,6 +8,7 @@ import EmailForm from './EmailForm/index.js';
 
 const memorialContent = {
   name: "E · L · I · A · N · A",
+  image: './eliana.svg',
   subtext: "Our Precious Angel",
   dateOfBirth: "October 17, 2025",
   introduction: "Forever in our hearts, eternally in heaven. Though your time with us was brief, your impact is eternal.",
@@ -62,21 +63,19 @@ function App() {
     <>
       {/* Canvas Background */}
       <canvas ref={canvasRef} className="canvas" />
-      <div style={{ width: '100%', height: '800px', position: 'absolute' }}>
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#00ffff"
-          raysSpeed={1.5}
-          lightSpread={1}
-          rayLength={1.2}
-          fadeDistance={2}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
-          className="custom-rays"
-        />
-      </div>
+      <LightRays
+        raysOrigin="top-center"
+        raysColor="#00ffff"
+        raysSpeed={1.5}
+        lightSpread={1}
+        rayLength={1.2}
+        fadeDistance={2}
+        followMouse={true}
+        mouseInfluence={0.1}
+        noiseAmount={0.1}
+        distortion={0.05}
+        className="custom-rays"
+      />
 
       {/* Navigation */}
       <nav className="nav">
@@ -132,6 +131,22 @@ function App() {
           <div id="home" className="section">
             <div className="heroContent" style={parallaxStyle}>
               <div className="nameContainer" style={parallaxStyle}>
+                <img
+                  src={memorialContent.image}
+                  alt="Eliana"
+                  style={{
+                    width: '250px',
+                    height: '250px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    margin: '20px auto',
+                    display: 'block',
+                    border: '3px solid #d4b03878',
+                    boxShadow: '0 4px 20px #49400c, inset 0 2px 10px #0000004d'
+                  }}
+                />
+              </div>
+              <div className="nameContainer" style={parallaxStyle}>
                 <h2 className="babyName">{memorialContent.name}</h2>
               </div>
 
@@ -156,7 +171,7 @@ function App() {
             </div>
           </div>
 
-          <div id="mum&Dad" className="section blurBackdrop"> 
+          <div id="mum&Dad" className="section blurBackdrop">
             <div className="sectionHeader">
               <blockquote className="quotes">
                 <div className="lightBox">
