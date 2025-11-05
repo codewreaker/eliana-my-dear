@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import './App.css'
-import type { Tribute, NewTribute } from './types';
+// import type { Tribute, NewTribute } from './types';
 
 import LightRays from './LightRays';
 import useMouseMove from './util/useMouseMove.js';
@@ -28,31 +28,31 @@ const memorialContent = {
 function App() {
   const [openForm, setOpenForm] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
-  const [visitorTributes, setVisitorTributes] = useState<Tribute[]>([{
-    created_at: (new Date()).toISOString(),
-    id: 1,
-    message: 'Lorem Ipsum dit dolor',
-    name: 'Israel'
-  }]);
-  const [newTribute, setNewTribute] = useState<NewTribute>({ name: '', message: '' });
+  // const [visitorTributes, setVisitorTributes] = useState<Tribute[]>([{
+  //   created_at: (new Date()).toISOString(),
+  //   id: 1,
+  //   message: 'Lorem Ipsum dit dolor',
+  //   name: 'Israel'
+  // }]);
+  // const [newTribute, setNewTribute] = useState<NewTribute>({ name: '', message: '' });
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { mousePos, particles, scrollY } = useMouseMove(canvasRef);
 
   // Load visitor tributes
-  useEffect(() => {
-    const loadTributes = async () => {
-      try {
-        const response = await fetch('/api/tributes');
-        if (response.ok) {
-          const data = await response.json();
-          setVisitorTributes(data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    loadTributes();
-  }, []);
+  // useEffect(() => {
+  //   const loadTributes = async () => {
+  //     try {
+  //       const response = await fetch('/api/tributes');
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setVisitorTributes(data);
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   loadTributes();
+  // }, []);
 
   const parallaxStyle = {
     transform: `translateY(${scrollY * 0.5}px)`
@@ -183,51 +183,8 @@ function App() {
             </div>
 
             {openForm && <EmailForm />}
-            <div className="visitorTributeContainer">
-              <form
-                onSubmit={async (e) => {
-                  e.preventDefault();
-                  try {
-                    const response = await fetch('/api/tributes', {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
-                      },
-                      body: JSON.stringify(newTribute),
-                    });
-                    if (response.ok) {
-                      const tribute = await response.json();
-                      setVisitorTributes(prev => [tribute, ...prev]);
-                      setNewTribute({ name: '', message: '' });
-                    }
-                  } catch (error) {
-                    console.error(error);
-                  }
-                }}
-                className="tributeForm"
-              >
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  value={newTribute.name}
-                  onChange={(e) => setNewTribute(prev => ({ ...prev, name: e.target.value }))}
-                  className="tributeInput"
-                  required
-                />
-                <textarea
-                  placeholder="Share your message..."
-                  value={newTribute.message}
-                  onChange={(e) => setNewTribute(prev => ({ ...prev, message: e.target.value }))}
-                  className="tributeTextarea"
-                  required
-                />
-                <button type="submit" className="tributeSubmitButton">
-                  Share Your Tribute
-                </button>
-              </form>
-            </div>
 
-            <div className="section blurBackdrop">
+            {/* <div className="section blurBackdrop">
               <div className="visitorTributesList">
                 {visitorTributes.map((tribute) => (
                   <div key={tribute.id} className="visitorTributeCard">
@@ -239,7 +196,7 @@ function App() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </main>
 
