@@ -81,7 +81,7 @@ function App() {
       {/* Navigation */}
       <nav className="nav">
         <div className="navContainer">
-          {['home', 'memories', 'tributes'].map((section) => (
+          {['home', 'mum&Dad', 'tributes'].map((section) => (
             <button
               key={section}
               className={`navButton ${activeSection === section ? 'navButtonActive' : ''}`}
@@ -99,7 +99,7 @@ function App() {
         </div>
       </nav>
 
-      <div className="main">
+      <div>
         {/* Animated Gradient Overlay */}
         <div
           className="gradientOverlay"
@@ -128,7 +128,7 @@ function App() {
         </div>
 
         {/* Main Content */}
-        <main className="main">
+        <main>
           <div id="home" className="section">
             <div className="heroContent" style={parallaxStyle}>
               <div className="nameContainer" style={parallaxStyle}>
@@ -156,7 +156,7 @@ function App() {
             </div>
           </div>
 
-          <div id="memories" className="section blurBackdrop">
+          <div id="mum&Dad" className="section blurBackdrop"> 
             <div className="sectionHeader">
               <blockquote className="quotes">
                 <div className="lightBox">

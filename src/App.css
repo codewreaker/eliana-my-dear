@@ -1,9 +1,12 @@
-.main {
-  min-height: 100vh;
+/* Main Content */
+main {
+  margin: 0 auto;
   color: #fff;
-  position: relative;
   overflow: auto;
+  z-index: 10;
 }
+
+
 
 div[style*="memoryCard"]:hover {
   transform: translateY(-10px);
@@ -286,15 +289,8 @@ div[style*="memoryCard"]:hover>div[style*="memoryCardGlow"] {
   animation: expand 0.3s ease-out;
 }
 
-/* Main Content */
-.main {
-  position: relative;
-  z-index: 10;
-  margin: 0 auto;
-}
-
 .section {
-  width: 100%;
+  width: auto;
   padding: 10px;
   animation: fade-in-up 0.8s ease-out;
 }
@@ -585,6 +581,7 @@ blockquote.quotes div:after {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
   .nav {
     padding: 15px 10px;
   }

@@ -30,7 +30,7 @@ app.post('/api/send-email', async (c) => {
   });
 
 
-  const from = `Contact Form <${process.env.EMAIL_USER}>`;
+  const from = `Tribute to Eliana <${process.env.EMAIL_USER}>`;
   const to = `${process.env.EMAIL_MAIN_USER}, ${process.env.EMAIL_CC_USER || 'israel.agyeman.prempeh@gmail.com'}`; // Change to your receiving email address
   const replyTo = email;
   const subject = `New Tribute to Eliana from ${name}`;
@@ -65,15 +65,15 @@ const emailTemplate = (name: string, email: string, subject: string, message: st
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Tribute</title>
 </head>
-<body style="margin: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; line-height: 1.5; color: #ffffff; background: #0a0a0a; padding: min(20px, 3vw);">
-    <div class="email-container" style="padding: 0; box-sizing: border-box; max-width: 600px; margin: 10% auto; background: #1a1a1a; border: 2px solid #333;">
+<body style="margin: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; line-height: 1.5; color: #ffffff; background-color: #0a0a0a; padding: min(20px, 3vw);">
+    <div class="email-container" style="padding: 0; box-sizing: border-box; max-width: 600px; margin: 10% auto; background-color: #1a1a1a; border: 2px solid #333;">
         <div class="header" style="margin: 0; box-sizing: border-box; background: #11153bff; padding: clamp(24px, 6vw, 40px); text-align: center;">
             <h1 style="margin: 0; padding: 0; box-sizing: border-box; font-size: clamp(20px, 5vw, 28px); font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">${subject}</h1>
         </div>
         
         <div class="content" style="margin: 0; box-sizing: border-box; padding: clamp(24px, 5vw, 40px);">
             <div class="notification-badge" style="margin: 0; box-sizing: border-box; background: rgba(255, 107, 53, 0.1); color: #FF6B35; padding: 12px 20px; border-radius: 50px; font-size: 14px; font-weight: 600; margin-bottom: 32px; border: 1px solid rgba(255, 107, 53, 0.2); position: relative;">
-                LIVE SUBMISSION RECEIVED
+                TRIBUTE RECEIVED
             </div>
             
             <div class="fields-container" style="margin: 0; padding: 0; box-sizing: border-box; display: grid; gap: 2px; background: #333;">
@@ -103,7 +103,7 @@ const emailTemplate = (name: string, email: string, subject: string, message: st
         </div>
         
         <div class="footer" style="margin: 0; box-sizing: border-box; background: #0f0f0f; padding: clamp(20px, 4vw, 32px); text-align: center; border-top: 2px solid #333;">
-            <p style="margin: 0; padding: 0; box-sizing: border-box; color: #666; font-size: clamp(12px, 2.5vw, 14px); margin-bottom: 16px;">This email was automatically generated from your portfolio contact form.</p>
+            <p style="margin: 0; padding: 0; box-sizing: border-box; color: #666; font-size: clamp(12px, 2.5vw, 14px); margin-bottom: 16px;">This email was automatically generated from elianas website.</p>
         </div>
     </div>
 </body>
