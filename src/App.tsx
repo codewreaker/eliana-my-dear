@@ -28,6 +28,43 @@ const memorialContent = {
 };
 
 
+const charities: Array<{
+  name: string;
+  description: string;
+  link: string;
+  img: string;
+}> = [
+    {
+      name: 'Abigails Footsteps',
+      description: "Is a baby loss charity providing support and counselling for bereaved parents and families as well as specialist \
+    bereavement training for midwives and healthcare professionals. Since 2010, they have worked to improve the way bereaved parents are \
+    cared for by hospitals and to better educate midwives on how to care for grieving parents. One of their greatest contributions as a charity\
+    has been the Abi cooling cot which allowed us valuable time to spend with Eliana before saying goodbye",
+      link: 'https://abigailsfootsteps.co.uk/',
+      img: './abigail-logo-strapline.png'
+    },
+    {
+      name: 'Remember my Baby',
+      description: 'Remember My Baby’ (RMB) is a non-profit registered charity created by professional photographers for the benefit of bereaved parents across the UK\
+      RMB has a network of talented and highly trained remembrance photographers throughout the UK who are willing to use their skills, as volunteers, and give up their \
+      time to help bereaved families capture a lasting and tangible memory of their baby - at no cost to the parents or the healthcare trust/hospice',
+      link: 'https://remembermybaby.org.uk/',
+      img: './remember-my-baby-logo.png'
+    },
+        {
+      name: 'Medway Maritime Maternity',
+      description: 'The medway maternity were really amazing at helping us through our grief. The midwives were absolutely lovely and lessened our pain a bit\
+      without them we don\'t know how we would have gone through this. A big thank you to Sarah Jane, Sarah, Emma, Nicky, Nikki and Linda who were absolutely amazing.\
+      Thank you guys ❤️',
+      link: 'https://www.medway.nhs.uk/services/maternity/',
+      img: './nhs-medway-logo-full.svg'
+    },
+    
+  ]
+  
+
+ 
+
 function App() {
   const [openForm, setOpenForm] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
@@ -82,7 +119,7 @@ function App() {
       {/* Navigation */}
       <nav className="nav">
         <div className="navContainer">
-          {['home', 'mum&Dad', 'tributes'].map((section) => (
+          {['home', 'mum&Dad', 'tributes', 'giving'].map((section) => (
             <button
               key={section}
               className={`navButton ${activeSection === section ? 'navButtonActive' : ''}`}
@@ -200,7 +237,7 @@ function App() {
               <p className="sectionSubtitle">Add your words of love and remembrance</p>
             </div>
 
-            {openForm && <EmailForm onSuccess={newData => setVisitorTributes(prev=>([...prev, newData]))} />}
+            {openForm && <EmailForm onSuccess={newData => setVisitorTributes(prev => ([...prev, newData]))} />}
 
             <div className="section blurBackdrop">
               <div className="visitorTributesList">
@@ -211,6 +248,34 @@ function App() {
                       {new Date(tribute.created_at).toLocaleDateString()}
                     </div>
                     <p className="visitorTributeMessage">{tribute.message}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div id="giving" className="section blurBackdrop">
+            <div className="sectionHeader">
+              <h2 className="sectionTitle">Giving</h2>
+              <p className="sectionSubtitle" style={{padding: '0 10%'}}>
+                Though our time with our daughter was heartbreakingly brief, her presence changed our lives forever. In her honour, we invite you to give—not to us, \
+                but to the incredible charities that carried us through our darkest moments. These organisations bring light, comfort, and hope to families like ours every day.
+
+                Giving to the hands that held us when our world fell silent, will be the greatest gift . You can use 'ELIANA' as reference let us know if you did give to any of these charities
+              </p>
+            </div>
+
+
+            <div className="section blurBackdrop">
+              <div className="visitorTributesList">
+                {charities.map((charity) => (
+                  <div key={charity.name} className="visitorTributeCard">
+                    <div className="visitorTributeTitle">
+                      <p className="visitorTributeName">{charity.name}</p>
+                      <a href={charity.link} target='_blank'>Donate</a>
+                    </div>
+                    <img src={charity.img} />
+                    <p className="visitorTributeMessage">{charity.description}</p>
                   </div>
                 ))}
               </div>

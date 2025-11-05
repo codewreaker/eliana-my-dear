@@ -110,6 +110,11 @@ div[style*="memoryCard"]:hover>div[style*="memoryCardGlow"] {
   .visitorTributesList {
     column-count: 4;
   }
+
+  #giving .visitorTributesList {
+    column-count: 3;
+    padding: 0 20%;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
