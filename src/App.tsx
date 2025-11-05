@@ -9,7 +9,7 @@ import EmailForm from './EmailForm/index.js';
 const memorialContent = {
   name: "E · L · I · A · N · A",
   image: './eliana.svg',
-  subtext: "Our Precious Angel",
+  subtext: "Agyeman-Prempeh",
   dateOfBirth: "October 17, 2025",
   introduction: "Forever in our hearts, eternally in heaven. Though your time with us was brief, your impact is eternal.",
   poem: [
