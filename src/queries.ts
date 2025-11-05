@@ -99,39 +99,6 @@ export async function searchTributes(searchTerm:string) {
   }
 }
 
-// ===== RUN ALL TESTS =====
-export async function runAllTests() {
-  console.log('🚀 Starting API Tests...\n');
-  console.log('='.repeat(50) + '\n');
-  
-  // Test 1: Get all tributes
-  const allTributes:Tribute[] = await getAllTributes();
-  
-  // Test 2: Create a new tribute
-  const newTribute = await createTribute(
-    'Test User',
-    'This is a test tribute message to verify the API is working correctly.'
-  );
-  
-  // Test 3: Get the newly created tribute by ID
-  if (newTribute && newTribute.id) {
-    await getTributeById(newTribute.id);
-  }
-  
-  // Test 4: Search for tributes
-  await searchTributes('Test');
-  
-  // Test 5: Delete the test tribute (cleanup)
-  if (newTribute && newTribute.id) {
-    await deleteTribute(newTribute.id);
-  }
-  
-  // Test 6: Verify deletion by getting all tributes again
-  await getAllTributes();
-  
-  console.log('='.repeat(50));
-  console.log('✨ All tests completed!\n');
-}
 
 // ===== USAGE EXAMPLES =====
 
