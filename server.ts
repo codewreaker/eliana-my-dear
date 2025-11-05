@@ -63,12 +63,11 @@ const emailTemplate = (name: string, email: string, subject: string, message: st
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Contact Form Submission</title>
+    <title>New Tribute</title>
 </head>
 <body style="margin: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; line-height: 1.5; color: #ffffff; background: #0a0a0a; padding: min(20px, 3vw);">
     <div class="email-container" style="padding: 0; box-sizing: border-box; max-width: 600px; margin: 10% auto; background: #1a1a1a; border: 2px solid #333;">
-        <div class="header" style="margin: 0; box-sizing: border-box; background: #FF6B35; padding: clamp(24px, 6vw, 40px); text-align: center;">
-            <div class="avatar" style="padding: 0; box-sizing: border-box; width: 60px; height: 60px; background: #1a1a1a; border-radius: 50%; border: 3px solid #1a1a1a; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; color: #FF6B35;">IA</div>
+        <div class="header" style="margin: 0; box-sizing: border-box; background: #11153bff; padding: clamp(24px, 6vw, 40px); text-align: center;">
             <h1 style="margin: 0; padding: 0; box-sizing: border-box; font-size: clamp(20px, 5vw, 28px); font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">${subject}</h1>
         </div>
         
