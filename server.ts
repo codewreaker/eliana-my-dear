@@ -33,7 +33,7 @@ app.post('/api/send-email', async (c) => {
   const from = `Contact Form <${process.env.EMAIL_USER}>`;
   const to = `${process.env.EMAIL_MAIN_USER}, ${process.env.EMAIL_CC_USER || 'israel.agyeman.prempeh@gmail.com'}`; // Change to your receiving email address
   const replyTo = email;
-  const subject = `New Contact Form Submission from ${name}`;
+  const subject = `New Tribute to Eliana from ${name}`;
 
   const mailOptions = {
     from,
@@ -81,7 +81,7 @@ const emailTemplate = (name: string, email: string, subject: string, message: st
                     <div class="contact-header" style="margin: 0; padding: 0; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                         <div class="contact-label" style="margin: 0; padding: 0; box-sizing: border-box; font-size: clamp(10px, 2vw, 12px); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #FF6B35; opacity: 0.7;">FROM</div>
                         <div class="contact-actions" style="margin: 0; padding: 0; box-sizing: border-box;">
-                            <a href="mailto:${email}" class="reply-btn" style="margin: 0; box-sizing: border-box; background: #FF6B35; color: #1a1a1a; text-decoration: none; font-size: clamp(10px, 2vw, 11px); font-weight: 700; padding: 6px 12px; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s ease;">REPLY</a>
+                            <a href="mailto:${email}" class="reply-btn" style="margin: 0; box-sizing: border-box; background: #0a0a1a; color: #FF6B35; text-decoration: none; font-size: clamp(10px, 2vw, 11px); font-weight: 700; padding: 6px 12px; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s ease;">REPLY</a>
                         </div>
                     </div>
                     <div class="contact-name" style="margin: 0; padding: 0; box-sizing: border-box; font-size: clamp(24px, 5vw, 32px); font-weight: 700; color: #ffffff; margin-bottom: 8px; letter-spacing: -0.5px;">${name}</div>
