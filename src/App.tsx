@@ -1,10 +1,12 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './App.css'
-// import type { Tribute, NewTribute } from './types';
+import type { Tribute } from './types';
 
 import LightRays from './LightRays';
 import useMouseMove from './util/useMouseMove.js';
 import EmailForm from './EmailForm/index.js';
+
+
 
 const memorialContent = {
   name: "E · L · I · A · N · A",
@@ -29,31 +31,31 @@ const memorialContent = {
 function App() {
   const [openForm, setOpenForm] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
-  // const [visitorTributes, setVisitorTributes] = useState<Tribute[]>([{
-  //   created_at: (new Date()).toISOString(),
-  //   id: 1,
-  //   message: 'Lorem Ipsum dit dolor',
-  //   name: 'Israel'
-  // }]);
-  // const [newTribute, setNewTribute] = useState<NewTribute>({ name: '', message: '' });
+  const [visitorTributes, setVisitorTributes] = useState<Tribute[]>([{
+    created_at: (new Date()).toISOString(),
+    id: 1,
+    message: 'Lorem Ipsum dit dolor',
+    name: 'Israel'
+  }]);
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { mousePos, particles, scrollY } = useMouseMove(canvasRef);
 
   // Load visitor tributes
-  // useEffect(() => {
-  //   const loadTributes = async () => {
-  //     try {
-  //       const response = await fetch('/api/tributes');
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         setVisitorTributes(data);
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   loadTributes();
-  // }, []);
+  useEffect(() => {
+    const loadTributes = async () => {
+      try {
+        const response = await fetch('/api/tributes');
+        if (response.ok) {
+          const data = await response.json();
+          setVisitorTributes(data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    loadTributes();
+  }, []);
 
   const parallaxStyle = {
     transform: `translateY(${scrollY * 0.5}px)`
@@ -200,7 +202,7 @@ function App() {
 
             {openForm && <EmailForm />}
 
-            {/* <div className="section blurBackdrop">
+            <div className="section blurBackdrop">
               <div className="visitorTributesList">
                 {visitorTributes.map((tribute) => (
                   <div key={tribute.id} className="visitorTributeCard">
@@ -212,7 +214,7 @@ function App() {
                   </div>
                 ))}
               </div>
-            </div> */}
+            </div>
           </div>
         </main>
 

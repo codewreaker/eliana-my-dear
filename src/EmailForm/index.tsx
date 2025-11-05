@@ -4,6 +4,35 @@ import { isDevelopment } from "std-env";
 
 const API_URL = isDevelopment ? 'http://localhost:3001/api/send-email' : '/api/send-email';
 
+
+// ===== 2. CREATE NEW TRIBUTE =====
+async function createTribute(name:string, message:string) {
+  console.log('➕ Testing POST create tribute...');
+  try {
+    const response = await fetch('api/tributes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        message: message
+      }),
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log('✅ Success! Created tribute:', data);
+    console.log(`New tribute ID: ${data.id}\n`);
+    return data;
+  } catch (error) {
+    console.error('❌ Error:', error);
+  }
+}
+
 const EmailForm: FC = () => {
     const [formData, setFormData] = useState({
         name: '',

@@ -4,8 +4,3 @@ export interface Tribute {
   message: string;
   created_at: string;
 }
-
-export interface NewTribute {
-  name: string;
-  message: string;
-}
