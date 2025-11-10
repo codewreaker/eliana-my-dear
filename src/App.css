@@ -348,7 +348,6 @@ div[style*="memoryCard"]:hover>div[style*="memoryCardGlow"] {
   align-items: center;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 40px;
 }
 
 .wingLeft {
@@ -619,14 +618,19 @@ blockquote.quotes div:after {
 
   .nav {
     padding: 15px 10px;
+
+    & .navButtonText {
+      font-size: 0.9rem;
+    }
   }
 
   .navContainer {
     gap: 15px;
   }
 
+
   .section {
-    padding: 40px 20px;
+    padding: 20px;
   }
 
   .visitorTributesList {
