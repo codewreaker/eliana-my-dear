@@ -290,7 +290,7 @@ function App() {
             <div className="footerIcon">✦</div>
             <p className="footerText">
               Forever Loved • Never Forgotten • Always in Our Hearts
-              <code className="footerText">Designed by Dad with ❤️ </code>
+              <br/>Designed by Dad with ❤️
             </p>
             <div className="footerIcon">✦</div>
           </div>
