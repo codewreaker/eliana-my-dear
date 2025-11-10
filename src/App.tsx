@@ -234,7 +234,8 @@ function App() {
           <div id="tributes" className="section blurBackdrop">
             <div className="sectionHeader" onClick={() => setOpenForm(prev => !prev)}>
               <h2 className="sectionTitle">Share Your Tribute</h2>
-              <p className="sectionSubtitle">Add your words of love and remembrance</p>
+              <p className="sectionSubtitle">Add your words of love and remembrance </p>
+              <p className="sectionSubtitle">{`${visitorTributes.length} Tributes 👼🏾`}</p>
             </div>
 
             {openForm && <EmailForm onSuccess={newData => setVisitorTributes(prev => ([...prev, newData]))} />}
