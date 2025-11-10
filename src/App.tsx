@@ -287,8 +287,10 @@ function App() {
         <footer className="footer">
           <div className="footerContent">
             <div className="footerIcon">✦</div>
-            <p className="footerText">Forever Loved • Never Forgotten • Always in Our Hearts</p>
-            <code className="footerText">Designed by Dad with ❤️ </code>
+            <p className="footerText">
+              Forever Loved • Never Forgotten • Always in Our Hearts
+              <code className="footerText">Designed by Dad with ❤️ </code>
+            </p>
             <div className="footerIcon">✦</div>
           </div>
         </footer>
