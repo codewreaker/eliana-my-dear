@@ -51,7 +51,7 @@ const charities: Array<{
       link: 'https://remembermybaby.org.uk/',
       img: './remember-my-baby-logo.png'
     },
-        {
+    {
       name: 'Medway Maritime Maternity',
       description: 'The medway maternity were really amazing at helping us through our grief. The midwives were absolutely lovely and lessened our pain a bit\
       without them we don\'t know how we would have gone through this. A big thank you to Sarah Jane, Sarah, Emma, Nicky, Nikki and Linda who were absolutely amazing.\
@@ -59,11 +59,11 @@ const charities: Array<{
       link: 'https://www.medway.nhs.uk/services/maternity/',
       img: './nhs-medway-logo-full.svg'
     },
-    
-  ]
-  
 
- 
+  ]
+
+
+
 
 function App() {
   const [openForm, setOpenForm] = useState(true);
@@ -234,7 +234,8 @@ function App() {
           <div id="tributes" className="section blurBackdrop">
             <div className="sectionHeader" onClick={() => setOpenForm(prev => !prev)}>
               <h2 className="sectionTitle">Share Your Tribute</h2>
-              <p className="sectionSubtitle">Add your words of love and remembrance</p>
+              <p className="sectionSubtitle">Add your words of love and remembrance </p>
+              <p className="sectionSubtitle">{`${visitorTributes.length} Tributes 👼🏾`}</p>
             </div>
 
             {openForm && <EmailForm onSuccess={newData => setVisitorTributes(prev => ([...prev, newData]))} />}
@@ -257,7 +258,7 @@ function App() {
           <div id="giving" className="section blurBackdrop">
             <div className="sectionHeader">
               <h2 className="sectionTitle">Giving</h2>
-              <p className="sectionSubtitle" style={{padding: '0 10%'}}>
+              <p className="sectionSubtitle" style={{ padding: '0 10%' }}>
                 Though our time with our daughter was heartbreakingly brief, her presence changed our lives forever. In her honour, we invite you to give—not to us, \
                 but to the incredible charities that carried us through our darkest moments. These organisations bring light, comfort, and hope to families like ours every day.
 
@@ -287,7 +288,10 @@ function App() {
         <footer className="footer">
           <div className="footerContent">
             <div className="footerIcon">✦</div>
-            <p className="footerText">Forever Loved • Never Forgotten • Always in Our Hearts</p>
+            <p className="footerText">
+              Forever Loved • Never Forgotten • Always in Our Hearts
+              <br/>Designed by Dad with ❤️
+            </p>
             <div className="footerIcon">✦</div>
           </div>
         </footer>
