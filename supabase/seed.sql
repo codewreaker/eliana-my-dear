@@ -426,3 +426,6 @@ Your little angel is our forerunner to meet the Lord; take heart ❤️ and it i
 Love from Ayo & Billie',
         '2025-11-09 15:38:05.992433+00'
     );
+
+-- Reset the sequence to avoid duplicate key errors after seeding
+SELECT setval('tributes_id_seq', (SELECT MAX(id) FROM tributes));
